@@ -8,8 +8,18 @@ Die wichtigsten Aufgaben des Programms sind in den Header- und Quell-Dateien:
 2. queue.h und queue.c
     Organisiert die Warteschlange, in der die Autos warten müssen, wenn das Parkhaus voll ist.
 3. statistics.h und statistics.c
-    ist für das erstellen der Statistiken und ausgeben der Daten im Terminal. Außerdem erstellt es noch Dateien, wo die statistiken reingeschrieben werden
+    ist für das Erstellen der Statistiken und Ausgeben der Daten im Terminal. Außerdem erstellt es noch Dateien, wo die statistiken reingeschrieben werden
 4. sim_parameters.h und sim_parameters.c
     ist für das Implementieren der Simulations Parametern, die man vorher eingibt
 5. vehicle.h
     ist ein struct, wo alle informationen zu Autos übergeben werden und aufgerufen werden können
+
+geplante Statistiken:
+für die geplanten Statisikten haben wir jeweils Beispiel Dateien erstellt, wie die Statisikten ausgegeben werden sollen.
+Die running statistics werden nach jedem Zeitschritt angezeigt, wo aktueller Zeitschritt, Parkhausauslastung, Länge Warteschlange, wie viele Autos rein und 
+raus gefahren sind, und wie lange das letzte Auto, das reingefahren ist, gewartet hat, angezeigt werden. 
+in der Text Datei werden die selben Informationen der Übersicht halber als Tabelle ausgegeben.
+Die End statistics werden am Ende im Terminal und Text Datei gleich ausgegeben. 
+Als Simulations Parameter haben wir uns für Simulationsdauer, durchschnittliche Auslastung des Parkhauses, durchschnittliche Warteschlangenlänge, maximale Warteschlangenlänge,
+durchschnittliche Wartezeit und gesamte Anzahl der Fahrzeuge, die in der Simulation ein und ausgefahren sind, entschieden.
+

@@ -9,6 +9,7 @@ vehicle struct is defined in include/vehicle.h, so we can use it here also
 #include "../include/queue.h"
 #include <stdlib.h>
 #include "../include/vehicle.h"
+#include <stdio.h>
 
 // FUNCTION queue *init_queue()
 //     allocate memory for a new queue
@@ -172,15 +173,17 @@ END FUNCTION
 int print_queue(queue *p_queue){
     if (p_queue == NULL || p_queue->size == 0)
     {
-        print_queue("The queue is empty. \n");
+        printf("The queue is empty. \n");
         return -1;
     }
     else
     {
         node *p_current_node = p_queue->first_node;
+        int position = 1; //position in the queue, starting from 1 for better readability
         while (p_current_node != NULL)
         {
-            printf("Vehicle ID: %d, Position in Queue: %d \n", p_current_node->vehicle->vehicle_id, p_queue->size);
+            printf("Vehicle ID: %d, Position in Queue: %d \n", p_current_node->vehicle->vehicle_id, position);
+            position++;
             p_current_node = p_current_node->next;
         }
         return 0;
@@ -208,3 +211,30 @@ FUNCTION int free_queue(queue **queue)
     END IF
 END FUNCTION
 */
+int free_queue(queue **p_queue){
+    if (p_queue == NULL || *p_queue == NULL)
+    {
+        return -1;
+    }
+    if ((*p_queue)->size == 0)
+    {
+        free(*p_queue);
+        *p_queue = NULL; //set the original queue pointer to NULL to avoid dangling pointers
+        return 0;
+    }
+    else
+    {
+        node *p_current_node = (*p_queue)->first_node;
+        while (p_current_node != NULL)
+        {
+            node *p_tmp_node = p_current_node->next; //save a tmp pointer to the next node before freeing the current node
+            free(p_current_node->vehicle);
+            free(p_current_node);
+            p_current_node = p_tmp_node; //move to the next node using the tmp pointer
+        }
+        free(*p_queue); //free the memory of the queue itself
+        *p_queue = NULL; //set the original queue pointer to NULL to avoid dangling pointers -> this is why I used a double pointer
+        return 0;
+    }
+}
+    

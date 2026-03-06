@@ -100,8 +100,10 @@ FUNCTION sim_parameters *get_inputs(){
 */
 
 sim_parameters *get_inputs(){
+
     sim_parameters *p_inputs = malloc(sizeof(sim_parameters));
-    if (p_inputs == NULL) {
+    if (p_inputs == NULL) 
+    {
         return NULL;
     }
 
@@ -109,12 +111,16 @@ sim_parameters *get_inputs(){
 
     printf("Enter the maximum number of parking spaces: \n");
     char input_buffer[100];
-    if (fgets(input_buffer, sizeof(input_buffer), stdin) == NULL) {
+    if (fgets(input_buffer, sizeof(input_buffer), stdin) == NULL) 
+    {
         free(p_inputs);
         return NULL;
     }
+
     int max_parking_spaces = strtol(input_buffer, NULL, 10);
-    if (max_parking_spaces <= 0) {
+
+    if (max_parking_spaces <= 0) 
+    {
         printf("Maximum number of parking spaces must be greater than 0. \n");
         free(p_inputs);
         return NULL;
@@ -124,12 +130,16 @@ sim_parameters *get_inputs(){
     
 
     printf("Enter the maximum parking time for a vehicle: \n");
-    if (fgets(input_buffer, sizeof(input_buffer), stdin) == NULL) {
+    if (fgets(input_buffer, sizeof(input_buffer), stdin) == NULL) 
+    {
         free(p_inputs);
         return NULL;
     }
+
     int max_parking_time = strtol(input_buffer, NULL, 10);
-    if (max_parking_time <= 0) {
+
+    if (max_parking_time <= 0) 
+    {
         printf("Maximum parking time must be greater than 0. \n");
         free(p_inputs);
         return NULL;
@@ -139,12 +149,16 @@ sim_parameters *get_inputs(){
 
 
     printf("Enter the total number of time steps for the simulation: \n");
-    if (fgets(input_buffer, sizeof(input_buffer), stdin) == NULL) {
+    if (fgets(input_buffer, sizeof(input_buffer), stdin) == NULL) 
+    {
         free(p_inputs);
         return NULL;
     }
+
     int time_steps = strtol(input_buffer, NULL, 10);
-    if (time_steps <= 0) {
+
+    if (time_steps <= 0) 
+    {
         printf("Total number of time steps must be greater than 0. \n");
         free(p_inputs);
         return NULL;
@@ -154,12 +168,16 @@ sim_parameters *get_inputs(){
 
 
     printf("Enter the arrival probability (0-100): \n");
-    if (fgets(input_buffer, sizeof(input_buffer), stdin) == NULL) {
+    if (fgets(input_buffer, sizeof(input_buffer), stdin) == NULL) 
+    {
         free(p_inputs);
         return NULL;
     }
+
     int arrival_probability = strtol(input_buffer, NULL, 10);
-    if (arrival_probability < 0 || arrival_probability > 100) {
+
+    if (arrival_probability < 0 || arrival_probability > 100) 
+    {
         printf("Arrival probability must be between 0 and 100. \n");
         free(p_inputs);
         return NULL;
@@ -169,11 +187,14 @@ sim_parameters *get_inputs(){
 
 
     printf("Enter the random seed for the simulation: \n");
-    if (fgets(input_buffer, sizeof(input_buffer), stdin) == NULL) {
+    if (fgets(input_buffer, sizeof(input_buffer), stdin) == NULL) 
+    {
         free(p_inputs);
         return NULL;
     }
+
     int rand_seed = strtol(input_buffer, NULL, 10);
+
     p_inputs->rand_seed = rand_seed;
 
     return p_inputs;

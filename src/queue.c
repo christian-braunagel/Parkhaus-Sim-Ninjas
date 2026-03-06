@@ -133,26 +133,29 @@ END FUNCTION
 */
 
 vehicle *dequeue(queue *p_queue){
-    if (p_queue == NULL || p_queue->size == 0)
+    if (p_queue == NULL || p_queue->size == 0) //chech for a valid queue and if the queue is not empty
     {
-        return NULL;
+        return NULL;                    //indicates a failure to dequeue
     }
-    if (p_queue->size == 1)
+
+    if (p_queue->size == 1)             //special case for length = 1 because we also have to set first_node and last_node to NULL after freeing the node
     {
         vehicle *p_removed_vehicle = p_queue->first_node->vehicle;
-        free(p_queue->first_node);
         p_queue->size--;
-        p_queue->first_node = NULL;
+        p_queue->first_node = NULL;     //makes sure that the queue is empty after removing the only node in the queue
         p_queue->last_node = NULL;
+
+        free(p_queue->first_node);      //free the memory of the removed node, but not the vehicle because we need to return it
         return p_removed_vehicle;
     }
-    else
+    else                                // else is not necessary, just for better readability
     {
         vehicle *p_removed_vehicle = p_queue->first_node->vehicle;
         node *p_removed_node = p_queue->first_node;
+        p_queue->size--;                //decrement the size of the queue
         p_queue->first_node = p_removed_node->next;
-        free(p_removed_node);
-        p_queue->size--;
+
+        free(p_removed_node);           //free the memory of the removed node, but not the vehicle because we need to return it
         return p_removed_vehicle;
     }
 }
@@ -171,22 +174,23 @@ FUNCTION int print_queue(queue *queue)
 END FUNCTION
 */
 int print_queue(queue *p_queue){
-    if (p_queue == NULL || p_queue->size == 0)
+    //check whether the queue is printable (there is no point in printing an empty queue, and we also have to check for a valid queue)
+    if (p_queue == NULL || p_queue->size == 0)  //this check works because if the queue is NULL the second part of the condition will not be evaluated due to short-circuit evaluation, so we won't get a segmentation fault by trying to access the size of a NULL pointer
     {
         printf("The queue is empty. \n");
-        return -1;
+        return -1;                              //indicates a failure to print the queue
     }
     else
     {
         node *p_current_node = p_queue->first_node;
-        int position = 1; //position in the queue, starting from 1 for better readability
+        int position = 1;                       //position in the queue, starting from 1 for better readability
         while (p_current_node != NULL)
         {
             printf("Vehicle ID: %d, Position in Queue: %d \n", p_current_node->vehicle->vehicle_id, position);
             position++;
             p_current_node = p_current_node->next;
         }
-        return 0;
+        return 0;                               //indicates a successful print
     }
 }
 /*

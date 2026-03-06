@@ -168,7 +168,22 @@ FUNCTION int print_queue(queue *queue)
         RETURN 0
     END IF
 END FUNCTION
-
+*/
+int print_queue(queue *p_queue){
+    if (p_queue == NULL || p_queue->size == 0)
+    {
+        print_queue("The queue is empty. \n");
+        return -1;
+    }
+    node *p_current_node = p_queue->first_node;
+    while (p_current_node != NULL)
+    {
+        printf("Vehicle ID: %d, Position in Queue: %d \n", p_current_node->vehicle->vehicle_id, p_queue->size);
+        p_current_node = p_current_node->next;
+    }
+    return 0;
+}
+/*
 FUNCTION int free_queue(queue **queue)
     IF the queue pointer is NULL THEN
         RETURN -1 to indicate failure

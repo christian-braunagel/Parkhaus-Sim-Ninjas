@@ -93,7 +93,7 @@ int enqueue(queue *p_queue, int id, int parking_time, int current_time){
     p_new_node->vehicle = p_new_vehicle;
     p_new_node->next = NULL;
 
-    if (p_queue->size == 0)
+    if (p_queue->size == 0) //special case for length = 0 because first_node has to also be set to the new node.
     {
         p_queue->first_node = p_new_node;
         p_queue->last_node = p_new_node;
@@ -109,7 +109,7 @@ int enqueue(queue *p_queue, int id, int parking_time, int current_time){
     }
 }
 /*
-FUNCTION struct vehicle *dequeue(queue *queue)
+FUNCTION vehicle *dequeue(queue *queue)
     IF the queue->size is 0 OR queue ist NULL THEN
         RETURN -1
     END IF
@@ -129,7 +129,33 @@ FUNCTION struct vehicle *dequeue(queue *queue)
         RETURN pointer to saved vehicle
     END IF
 END FUNCTION
+*/
 
+vehicle *dequeue(queue *p_queue){
+    if (p_queue == NULL || p_queue->size == 0)
+    {
+        return NULL;
+    }
+    if (p_queue->size == 1)
+    {
+        vehicle *p_removed_vehicle = p_queue->first_node->vehicle;
+        free(p_queue->first_node);
+        p_queue->size--;
+        p_queue->first_node = NULL;
+        p_queue->last_node = NULL;
+        return p_removed_vehicle;
+    }
+    else
+    {
+        vehicle *p_removed_vehicle = p_queue->first_node->vehicle;
+        node *p_removed_node = p_queue->first_node;
+        p_queue->first_node = p_removed_node->next;
+        free(p_removed_node);
+        p_queue->size--;
+        return p_removed_vehicle;
+    }
+}
+/*
 FUNCTION int print_queue(queue *queue)
     IF the queue is empty or NULL THEN
         RETURN -1

@@ -9,32 +9,19 @@ ausprinten.*/
 #include "../include/sim_parameters.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
+
 
 void queue_test(){
+    //init_queue test
     queue *my_queue = init_queue();
-    if (my_queue == NULL) {
-        printf("Failed to initialize queue.\n");
-        return;
-    }
+    assert(my_queue != NULL);
+    
+    //enqueue test
+    assert(enqueue(my_queue, 1, 5, 0) == 0);
+    my_queue =NULL;                             //reset the queue for the next test
+    assert(enqueue(my_queue, 2, 3, 1) == -1);   //test for invalid queue pointer
 
-    enqueue(my_queue, 1, 60, 0);
-    enqueue(my_queue, 2, 120, 5);
-    enqueue(my_queue, 3, 30, 10);
-
-    printf("Queue after enqueues:\n");
-    print_queue(my_queue);
-
-    vehicle *v = dequeue(my_queue);
-    if (v != NULL) {
-        printf("Dequeued vehicle ID: %d\n", v->vehicle_id);
-        free(v);
-    }
-
-    printf("Queue after dequeue:\n");
-    print_queue(my_queue);
-
-    free_queue(&my_queue);
-    printf("Queue freed.\n");
 }
 
 void parkhaus_test(){

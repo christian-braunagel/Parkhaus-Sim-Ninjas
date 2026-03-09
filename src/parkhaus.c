@@ -82,7 +82,7 @@ int get_Used_Spots(vehicle *pParkhaus[]){
     return used_spaces;
 }
 
-vehicle** free_Parkhaus(vehicle **pParkhaus){
+vehicle** free_Parkhaus(vehicle **pParkhaus){ //only frees the array and the end pointer, not the cars. Might change that
     int i = 0;
     while(pParkhaus[i] == NULL || pParkhaus[i]->vehicle_id != -1){
         i++;

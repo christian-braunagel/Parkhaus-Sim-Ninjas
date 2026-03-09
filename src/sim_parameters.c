@@ -98,6 +98,35 @@ FUNCTION sim_parameters *get_inputs(){
 }
 
 */
+int get_int(const char *prompt, int min, int max) {
+    char input_buffer[100];
+    int value = 0;
+
+    while (1) { // Loop until valid input is received
+        printf("%s", prompt); // Display the prompt to the user
+        if (fgets(input_buffer, sizeof(input_buffer), stdin) == NULL) { // Read input from the user
+            fprintf(stderr, "Error reading input. Please try again.\n");
+            continue;
+        }
+
+        char *endptr;                           //pointer to the first character that could not be converted -> shoulf be \n if the entire input was a valid integer
+        value = strtol(input_buffer, &endptr, 10);
+
+        if (*endptr != '\n') {                  // Check if the conversion was successful and if the entire input was a valid integer
+            fprintf(stderr, "Invalid input. Please enter a valid integer.\n");
+            continue;
+        }
+
+        if (value < min || value > max) {      // Check if the value is in the valid range`
+            fprintf(stderr, "Input must be between %d and %d. Please try again.\n", min, max);
+            continue;
+        }
+
+        break;
+    }
+
+    return value;
+}
 
 sim_parameters *get_inputs(){
 

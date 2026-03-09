@@ -80,10 +80,9 @@ int get_Used_Spots(const struct vehicle Parkhaus[]);
  * 
  * This function frees the memory for the End_Point struct and for the whole Parkhaus Array 
  * 
- * 
  * @param[in] struct vehicle Parkhaus[] Parking garage array to be freed
  * 
- * @return 0 when sucessfull
+ * @return the Parkhaus Array set to NULL 
 */
-int free_Parkhaus(vehicle **pParkhaus);
+vehicle** free_Parkhaus(vehicle **pParkhaus);
 #endif

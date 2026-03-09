@@ -82,7 +82,7 @@ int get_Used_Spots(vehicle *pParkhaus[]){
     return used_spaces;
 }
 
-int free_Parkhaus(vehicle **pParkhaus){
+vehicle** free_Parkhaus(vehicle **pParkhaus){
     int i = 0;
     while(pParkhaus[i] == NULL || pParkhaus[i]->vehicle_id != -1){
         i++;
@@ -93,5 +93,5 @@ int free_Parkhaus(vehicle **pParkhaus){
     }
     free(pParkhaus);
     pParkhaus = NULL;
-    return 0;
+    return pParkhaus;
 }

@@ -92,13 +92,16 @@ vehicle** free_Parkhaus(vehicle **pParkhaus){ //only frees the array and the end
     }
     int i = 0;
     while(pParkhaus[i] == NULL || pParkhaus[i]->vehicle_id != -1){
+        if(pParkhaus[i] != NULL){
+            free(pParkhaus[i]);     //frees the memory of every Car that is still parked
+            pParkhaus[i] = NULL;
+        }
         i++;
     }
-    if(pParkhaus[i]->vehicle_id == -1){
-        free(pParkhaus[i]);
-        pParkhaus[i] = NULL;
-    }
-    free(pParkhaus);
+    free(pParkhaus[i]);   //frees the memory of the End_Pointer because the loop stops at the last Car
+    pParkhaus[i] = NULL;
+    
+    free(pParkhaus);        //frees the Parkhaus Array
     pParkhaus = NULL;
-    return pParkhaus;
+    return pParkhaus;       //returns the Pointer to NULL 
 }

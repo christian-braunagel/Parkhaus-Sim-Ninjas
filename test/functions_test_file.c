@@ -55,6 +55,8 @@ void parkhaus_test(){
 void statistics_test(){
     //updateStats test
     stats test_stats = {0};
+
+    updateStats (&test_stats, 4, 3, 3, 18, 17, 25, 46);
     
 }
 

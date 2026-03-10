@@ -74,7 +74,7 @@ void updateStats_test(){
     } else {
         avg_wait_time = 0.0;
     }
-    assert(avg_wait_time == 0.0);
+    assert(avg_wait_time == 0.0);   //because sum_cars_in is 0
 
     //second update
     updateStats(&test_stats, 14, 55, 2, 5, 4, 33, 0);
@@ -93,7 +93,7 @@ void updateStats_test(){
     } else {
         avg_wait_time = 0.0;
     }
-    assert(fabs(avg_wait_time - 0.068965) < 1e-6);
+    assert(fabs(avg_wait_time - 0.068965) < 1e-6); //assertion with double: difference must be over the tolerance of 1e-6
 }
 
 

@@ -8,7 +8,7 @@ vehicle **init(int Anzahl_Parkplätze){
     if(pParkhaus == NULL){
         return NULL;
     }
-    vehicle *End_Point = malloc(sizeof(vehicle));
+    vehicle *End_Point = malloc(sizeof(vehicle)); //The 'End_Point' has a unique ID and is always saved at the Last Spot of the Array. It is used to loop through the Array, without needing information about its length beforehand. 
     if(End_Point == NULL){
         free(pParkhaus);
         return NULL;

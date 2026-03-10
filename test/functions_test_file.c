@@ -53,7 +53,9 @@ void parkhaus_test(){
 }
 
 void statistics_test(){
-
+    //updateStats test
+    stats test_stats = {0};
+    
 }
 
 void sim_parameters_test(){

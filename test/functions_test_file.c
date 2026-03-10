@@ -55,30 +55,46 @@ void parkhaus_test(){
 void updateStats_test(){
     stats test_stats = {0};
 
-    updateStats (&test_stats, 4, 3, 3, 18, 0, 25, 46);
+    //first update
+    updateStats (&test_stats, 4, 0, 3, 18, 0, 25, 46);
 
     assert(test_stats.max_wait_time == 0);
     assert(test_stats.max_length_queue == 18);
-    assert(test_stats.sum_cars_in == 3);
-    aasert(test_stats.sum_cars_out == 3);
+    assert(test_stats.sum_cars_in == 0);
+    assert(test_stats.sum_cars_out == 3);
     assert(test_stats.sum_parkhaus_auslastung == 4);
     assert(test_stats.sum_wait_time == 0);
     assert(test_stats.sum_length_queue == 18);
 
+    //small test for final stats
+    unsigned int avg_wait_time;
+    if (test_stats.sum_cars_in > 0) {
+        avg_wait_time = test_stats.sum_wait_time / test_stats.sum_cars_in;
+    } else {
+        avg_wait_time = 0;
+    }
+    assert(avg_wait_time == 0);
+
+    //second update
     updateStats(&test_stats, 14, 55, 2, 5, 4, 33, 0);
 
     assert(test_stats.max_wait_time == 4);
     assert(test_stats.max_length_queue == 18);
     assert(test_stats.sum_cars_in == 58);
-    aasert(test_stats.sum_cars_out == 5);
+    assert(test_stats.sum_cars_out == 5);
     assert(test_stats.sum_parkhaus_auslastung == 18);
     assert(test_stats.sum_wait_time == 4);
     assert(test_stats.sum_length_queue == 23);
+
+    //small test for final stats
+    if (test_stats.sum_cars_in > 0) {
+        avg_wait_time = test_stats.sum_wait_time / test_stats.sum_cars_in;
+    } else {
+        avg_wait_time = 0;
+    }
+    assert(avg_wait_time == 0.068965);
 }
 
-void printfinalStats_test (){
-    
-}
 
 void sim_parameters_test(){
 

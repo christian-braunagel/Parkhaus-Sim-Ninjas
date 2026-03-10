@@ -164,7 +164,7 @@ void printRuntimeStats (const stats *pstats, const sim_parameters *pSim_paramete
     }
 }
 
-void createRunnningTimeStatsFile(stats *pstats){
+void createRunningTimeStatsFile(stats *pstats){
     char filename [50];
     int counter = 1;
 
@@ -190,7 +190,7 @@ void writeRunningTimeStatsToFile(const stats *pstats){
         pstats -> current_time, pstats -> parked_cars, pstats -> cars_in, pstats -> cars_out, pstats -> length_queue, pstats -> car_in_queue, pstats -> last_wait_time);
 }
 
-void closeRunnningTimeStatsFile(stats *pstats){
+void closeRunningTimeStatsFile(stats *pstats){
     if (pstats->running_stats_file != NULL){
         fclose(pstats->running_stats_file);
         pstats->running_stats_file = NULL;

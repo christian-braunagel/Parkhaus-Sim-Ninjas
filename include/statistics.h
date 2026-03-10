@@ -65,7 +65,7 @@ void printRuntimeStats(const stats *pstats, const sim_parameters *pSim_parameter
  * this function creates a new .txt file in which the running time statistics can be written into
  * the file is stored 
  */
-void createRunnningTimeStatsFile(stats *pstats);
+void createRunningTimeStatsFile(stats *pstats);
 
 /**
  * @brief       writes running statistics to file
@@ -86,7 +86,7 @@ void writeRunningTimeStatsToFile(const stats *pstats);
  * 
  * @return      this function does not return a value
  */
-void closeRunnningTimeStatsFile(const stats *pstats);
+void closeRunningTimeStatsFile(const stats *pstats);
 
 /**
  * @brief       prints final statistics

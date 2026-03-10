@@ -24,11 +24,11 @@ typedef struct sim_parameters { // Struct to hold the simulation parameters that
 int get_int(const char *prompt, int min, int max); 
 
 /**s
- * @brief Reads the simulation inputs from the user
+ * @brief Gets the simulation inputs from the user
  * 
- * Gets the simulation parameters from the user and returns it as a SimInputs struct. 
+ * Gets the sim_parameters from the user. If the user enters an invalid parameter, it will keep retrying to get a valid parameter.
  * 
- * @return SimInputs Pointer to the struct containing the simulation parameters, NULL if there was an error during input reading or conversion
+ * @return SimInputs Pointer to the struct containing the simulation parameters.
  */
 sim_parameters *get_inputs();
 

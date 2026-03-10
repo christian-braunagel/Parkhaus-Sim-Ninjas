@@ -97,7 +97,7 @@ FUNCTION sim_parameters *get_inputs(){
     RETURN the pointer to the sim_parameters struct containing the user inputs
 }
 
-//The following implementation doesn't 100% follow the pseudocode: I created an extra function to get inputs from the user, so get_inputs just calls get_int. This is a much better solution because it avoids a lot of repeating code and can be extended more easily.
+//The following implementation doesn't 100% follow the pseudocode: We created an extra function to get inputs from the user, so get_inputs just calls get_int. This is a much better solution because it avoids a lot of repetative code and can be extended more easily.
 
 */
 int get_int(const char *prompt, int min, int max) { 

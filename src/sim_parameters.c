@@ -97,22 +97,24 @@ FUNCTION sim_parameters *get_inputs(){
     RETURN the pointer to the sim_parameters struct containing the user inputs
 }
 
+//The following implementation doesn't 100% follow the pseudocode: I created an extra function to get inputs from the user, so get_inputs just calls get_int. This is a much better solution because it avoids a lot of repeating code and can be extended more easily.
+
 */
 int get_int(const char *prompt, int min, int max) { 
     char input_buffer[100];
     int value = 0;
 
-    while (1) { // Loop until valid input is received
+    while (1) {                                                             // Loop until valid input is received
         printf("%s", prompt);                                               // Display the prompt to the user
         if (fgets(input_buffer, sizeof(input_buffer), stdin) == NULL) {     // Read input from the user
             fprintf(stderr, "Error reading input. Please try again.\n");
             continue;
         }
 
-        char *endptr;                                                       //pointer to the first character that could not be converted -> shoulf be \n if the entire input was a valid integer
+        char *endptr;                                                       // pointer to the first character that could not be converted -> shoulf be \n if the entire input was a valid integer
         value = strtol(input_buffer, &endptr, 10);
 
-        if (*endptr != '\n' || *endptr == input_buffer[0]) {                                              // Check if the conversion was successful and if the entire input was a valid integer
+        if (*endptr != '\n' || *endptr == input_buffer[0]) {                // Check if the conversion was successful and if the entire input was a valid integer
             fprintf(stderr, "Invalid input. Please enter a valid integer.\n");
             continue;
         }
@@ -124,7 +126,7 @@ int get_int(const char *prompt, int min, int max) {
         else if (min == -1)                                     // If there is no minimum value, we only need to check if the value is less than the maximum value
         {
             if (value > max) {                                  // Check if the value is in the valid range
-                fprintf(stderr, "Input must be samller than %d. Please try again.\n", max);
+                fprintf(stderr, "Input must be smaller than %d. Please try again.\n", max);
                 continue;
             }
         }

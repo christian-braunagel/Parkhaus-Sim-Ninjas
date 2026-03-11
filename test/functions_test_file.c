@@ -48,6 +48,18 @@ void queue_test(){
     my_queue = NULL;
     assert(free_queue(&my_queue) == -1);            //test for invalid queue pointer, should return -1
 }
+//---------------------------------------------------------
+//functions for parkhaus_test
+void test_init(void){
+    printf("\n[#]Testing 'init' Function...");
+    vehicle **parkhaus = init(10);
+
+    assert(parkhaus[10]->vehicle_id == -1);
+    assert(parkhaus[9] == NULL);
+    parkhaus = free_Parkhaus(parkhaus);
+}
+
+//---------------------------------------------------------
 
 void parkhaus_test(){
 

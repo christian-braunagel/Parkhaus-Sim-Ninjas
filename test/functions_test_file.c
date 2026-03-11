@@ -50,8 +50,8 @@ void queue_test(){
 }
 //--------------------------------------------------------- 
 //functions for parkhaus_test; because we have to test quite a lot for some functions to ensure correct functionality, I wrote the tests for all Functions in their own Test_Function
-void test_init(void){
-    vehicle **parkhaus = init(10);
+void test_init_parkhaus(void){
+    vehicle **parkhaus = init_parkhaus(10);
 
     assert(parkhaus[10]->vehicle_id == -1);
     assert(parkhaus[9] == NULL);
@@ -59,7 +59,7 @@ void test_init(void){
 }
 void test_park_Car(void){
     vehicle **parkhaus;
-    parkhaus = init(10);
+    parkhaus = init_parkhaus(10);
     vehicle *Car1 = malloc(sizeof(vehicle));
     Car1->vehicle_id = 1;
     Car1->time_of_arrival = 1;
@@ -86,7 +86,7 @@ void test_park_Car(void){
     return;
 }
 void test_isFull(void){
-    vehicle **parkhaus = init(10);
+    vehicle **parkhaus = init_parkhaus(10);
     assert(isFull(parkhaus) == -1);
     for(int i=0; i<10; i++){
         vehicle *Car = malloc(sizeof(vehicle));
@@ -100,7 +100,7 @@ void test_isFull(void){
 }
 void test_get_Used_Spots(void){
     vehicle **parkhaus;
-    parkhaus = init(10);
+    parkhaus = init_parkhaus(10);
     vehicle *Car1 = malloc(sizeof(vehicle));
     Car1->vehicle_id = 1;
     vehicle *Car2 = malloc(sizeof(vehicle));
@@ -120,7 +120,7 @@ void test_get_Used_Spots(void){
 }
 void test_remove_finished_cars(void){
     vehicle **parkhaus;
-    parkhaus = init(10);
+    parkhaus = init_parkhaus(10);
     vehicle *Car1 = malloc(sizeof(vehicle));
     Car1->vehicle_id = 1;
     Car1->random_park_duration = 5;
@@ -143,7 +143,7 @@ void test_remove_finished_cars(void){
 }
 void test_free_Parkhaus(void){
     vehicle **parkhaus;
-    parkhaus = init(10);
+    parkhaus = init_parkhaus(10);
 
     parkhaus = free_Parkhaus(parkhaus);
     assert(parkhaus == NULL);
@@ -153,7 +153,7 @@ void test_free_Parkhaus(void){
 //---------------------------------------------------------
 
 void parkhaus_test(){
-    test_init();
+    test_init_parkhaus();
     test_free_Parkhaus();
     test_park_Car();
     test_isFull();

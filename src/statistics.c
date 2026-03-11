@@ -218,9 +218,9 @@ void printFinalStats (const stats *pstats, const sim_parameters *pSim_parameters
     if (pstats->sum_cars_in > 0) {
         avg_wait_time = pstats->sum_wait_time/pstats->sum_cars_in;
     } else {
-        avg_wait_time = 0;
+        avg_wait_time = 0.0;
     }
-    printf("\n%-35s %-40u minuten", "Wartezeit Ø:", avg_wait_time);
+    printf("\n%-35s %-40f minuten", "Wartezeit Ø:", avg_wait_time);
     printf("\n%-35s +%-40u/-%u", "ges. Anzahl Fahrzeuge rein/raus:", pstats->sum_cars_in, pstats->sum_cars_out);
 
     printf ("\n|");

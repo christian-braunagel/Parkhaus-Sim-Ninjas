@@ -27,8 +27,20 @@ Zum Schluss haben wir uns auch an die Implementierung von der main.c gesetzt.
 
 2. Welche anderen Optionen hatten Sie im Team hinsichtlich der Struktur oder Umsetzung gehabt?
 
+Andere Optionen waren:
+    1. Wir haben überlegt, andere Datenstrukturen zu verwenden z.B.:
+        - für das Parkhaus eine linked list anstelle eines Arrays
+        - 
+    2. 
+
 3. Warum haben Sie sich gegen die anderen Optionen entschieden bzw. für die gewählte Variante gemeinsam entschieden?
 
+    1. Warum wir uns für die Datenstrukturen entschieden haben:
+        - für das Parkhaus haben wir ein Array genommen, weil es eine feste Anzahl an Parkplätzen gibt 
+        und weil wir so auf jeden Index in o(1) zugreifen können. Bei der linked list könnte man auf die Indices nur in o(n) zugreifen
+
+
 4. Gab es Schwierigkeiten, Herausforderungen bei der Zusammenarbeit?
+
 
 5. Was ist Ihnen im Team einfach gefallen bzw. sehr gut gelungen?

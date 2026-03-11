@@ -2,6 +2,29 @@ Begründungen und Erklärungen für unser Projekt:
 
 1. Wie haben Sie die Aufgabenstellung gelöst?
 
+bevor wir beginnen konnten wirklich autonom zu arbeiten, haben wir folgendes noch in Zusammenarbeit erledigt:
+    - am Anfang haben wir uns zusammengesetzt und gemeinsam einen Plan erstellt
+    - wir haben alle Issues im GitHub repo gesammelt um einen Überblick zu bekommen 
+    - ein gesamtes Flowchart erstellt, das alle Funktionen und Logiken des Programms beinhaltet
+    - fesgelegt, dass die Haupt Header-Files sind Parkhaus, Queue und statistics 
+    - dann haben wir aufgeteilt, dass Nikolai die Queue, Julius das Parkhaus und Esther die Statistiken macht
+dann konnte jeder von uns an dem Pseudocode seiner Header Datei arbeiten.
+
+Für die schnelle Kommunikation haben wir auch eine WhatsApp Gruppe erstellt und uns ggf darüber informiert und Fragen gestellt.
+Wir haben darauf geachtet, dass jeder Merge request von mindestens einer anderen Person (bei wichtigen Merges beide anderen) reviewed und gemerged wird.
+Wenn wir zusammen an Funktionen und Issues gearbeitet haben, haben wir das größtenteils in den commit messages dazu geschreiben.
+
+Während der Arbeit an unseren Header-Dateien fiel uns auf, dass uns einiges strukturell noch fehlt, wie z.B:
+    - sim_parameters.h und sim_parameters.c : um die eingegebenen Simulationsparameter mehrmals zu nutzen, 
+    haben wir das Lesen und speichern dieser Parameter in einer eigenen Datei ausgelagert
+    - vehicle.h : da wir die Informationen von den Fahrzeugen in mehreren Funktionen und Header-Dateien nutzen,
+    haben wir diesen struct auch ausgelagert
+
+Unsere Arbeitsweise im zweiten Teil der Aufgabe lief deutlich einfacher, da wir schon Plan und Pseudocode hatten.
+Nachdem wir alle unsere Dateien und Funktionen implementiert waren, mussten wir auch die assert-tests erstellen. 
+die Tests haben wir in einem gemeinsamen Treffen durchgeführt und konnten so auch noch mehrere Fehler in unserem Code erkennen und korrigieren.
+Zum Schluss haben wir uns auch an die Implementierung von der main.c gesetzt.
+
 2. Welche anderen Optionen hatten Sie im Team hinsichtlich der Struktur oder Umsetzung gehabt?
 
 3. Warum haben Sie sich gegen die anderen Optionen entschieden bzw. für die gewählte Variante gemeinsam entschieden?

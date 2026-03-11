@@ -33,6 +33,12 @@ die main zu implementieren, was durch die selbstständige Vorarbeit deutlich ver
 Mit der vorerst fertigen main haben wir dann das Programm endlich zusammengesetzt testen können. 
 Dabei sind uns dann, wie zu erwarten, noch weitere Fehler aufgefallen, die wir dann zusammen fixen konnten.
 
+### 1.3 Zusammenfassung
+
+Insgesamt haben wir herausgefunden, dass für unser Team vor allem eine klare und strukturierte Arbeitsweise am besten funktioniert hat. Zunächst haben wir die Umsetzung gemeinsam geplant und die Aufgaben sinnvoll aufgeteilt. Anschließend wurden die einzelnen Teilbereiche eigenständig bearbeitet, gegenseitig reviewed und am Ende gemeinsam integriert und getestet.
+
+So in der Form haben wir beide Aufgabenteile gelöst.
+
 ## 2.0 Alternative Optionen
 >Welche anderen Optionen hatten wir hinsichtlich der Struktur oder Umsetzung?
 
@@ -94,7 +100,11 @@ Dies konnten wir lösen, indem wir auf dem Remote den fehlerhaften Branch gelös
  die gelöschten Branches des Origins synchronisiert haben.
 
 ### 6.2 Iteration über das Parkhaus-Array
-Eine andere Schwierigkeit, die wir am Anfang überkommen mussten, war die Frage wie wir durch das Parkhaus Array durchlaufen können. Da die Anzahl der Parkplätze in der main.c gespeichert ist, hätten wir bei jedem Aufruf von Funktionen aus parkhaus.c diesen Wert übergeben müssen. Wir haben uns von Anfang an dagegen entschieden, da dies nur zu einer höheren Komplexität in der Implementierung führt. Wir wollten eine Lösung, die Seperat, nur lokal in parkhaus.c funktioniert, aber trotzdem Arrays jeglicher Größe durchlaufen kann. <br>
-So kamen wir auf die Idee einen "End_Point" einzubauen. Dieser hat die einzigartige `vehicle_id = -1` und wird beim initialisieren des Arrays im Index[Anzahl_Parkplätze], also im letzten Parkplatz + 1 gespeichert. <br>
+Eine andere Schwierigkeit, die wir am Anfang überkommen mussten, war die Frage wie wir durch das Parkhaus Array durchlaufen können. Da die Anzahl der Parkplätze in der main.c gespeichert ist, hätten wir bei jedem Aufruf von Funktionen aus parkhaus.c diesen Wert übergeben müssen. Wir haben uns von Anfang an dagegen entschieden, da dies nur zu einer höheren Komplexität in der Implementierung führt. Wir wollten eine Lösung, die Seperat, nur lokal in parkhaus.c funktioniert, aber trotzdem Arrays jeglicher Größe durchlaufen kann.
+
+
+So kamen wir auf die Idee einen "End_Point" einzubauen. Dieser hat die einzigartige `vehicle_id = -1` und wird beim initialisieren des Arrays im Index[Anzahl_Parkplätze], also im letzten Parkplatz + 1 gespeichert.
+
+
 So müssen wir zum durchlaufen des Arrays nur schauen, ob der aktuelle Wert die Eigenschaft `vehicle_id != -1` hat. Hier ist es wichtig, dass die leeren Plätze mit NULL belegt sind und eine Abfrage `NULL->vehicle.id` nicht möglich ist. Deshalb wird in der while-Schleife erst geprüft, ob der aktuelle Wert == NULL ist und erst wenn dies nicht der Fall wird er dereferenziert. 
 So haben wir eine wie wir finden elegante und vorallem autonome Methode das Array durchzulaufen.

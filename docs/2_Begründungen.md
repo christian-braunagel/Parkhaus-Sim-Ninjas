@@ -3,26 +3,23 @@
 ## 1. Wie haben Sie die Aufgabenstellung gelöst?
 
 Bevor wir beginnen konnten, wirklich autonom zu arbeiten, haben wir Folgendes noch in Zusammenarbeit erledigt:
-    - am Anfang haben wir uns zusammengesetzt und gemeinsam einen Plan erstellt
+    - am Anfang haben wir uns zusammengesetzt und gemeinsam einen Gesamtplan erstellt
     - wir haben alle Issues im GitHub repo gesammelt um einen Überblick zu bekommen 
-    - ein grundlegendes Flowchart für main erstellt, das alle Funktionen und Logiken des Programms beinhaltet
-    - fesgelegt, dass die Haupt Header-Files sind Parkhaus, Queue und statistics 
-    - dann haben wir aufgeteilt, dass Nikolai die Queue, Julius das Parkhaus und Esther die Statistiken macht
+    - ein grundlegendes Flowchart für main erstellt, das alle Funktionen und Logiken des Programms beeinhaltet
+    - festgelegt, dass die Haupt Header-Files Parkhaus, Queue und statistics sind
+    - dann haben wir aufgeteilt, dass Nikolai Schlosser die Queue, Julius Faustmann das Parkhaus und Esther Birngruber die Statistiken macht
 dann konnte jeder von uns an dem Pseudocode seiner Header Datei arbeiten.
 
 Für die schnelle Kommunikation haben wir auch eine WhatsApp Gruppe erstellt und uns ggf darüber informiert und Fragen gestellt.
-Wir haben darauf geachtet, dass jeder Merge request von mindestens einer anderen Person (bei wichtigen Merges beide anderen) reviewed und erst dann gemerged wird.
-Wenn wir zusammen an Funktionen und Issues gearbeitet haben, haben wir das größtenteils in den commit messages dazu geschreiben.
+Wir haben darauf geachtet, dass jeder Merge request von mindestens einer anderen Person (bei wichtigen Merges beide anderen) reviewed und erst dann gemerged wurde.
+Wenn wir zusammen an Funktionen und Issues gearbeitet haben, haben wir das Größtenteils in den commit messages dazu geschreiben.
 
 Während der Arbeit an unseren Header-Dateien fiel uns auf, dass uns einiges strukturell noch fehlt, wie z.B:
-    - sim_parameters.h und sim_parameters.c : um die eingegebenen Simulationsparameter mehrmals zu nutzen, 
-    haben wir das Lesen und speichern dieser Parameter in einer eigenen Datei ausgelagert
-    - vehicle.h : da wir die Informationen von den Fahrzeugen in mehreren Funktionen und Header-Dateien nutzen,
-    haben wir diesen struct auch ausgelagert
+    - sim_parameters.h und sim_parameters.c : um die eingegebenen Simulationsparameter mehrmals zu nutzen, haben wir das Lesen und speichern dieser Parameter in einer eigenen Datei ausgelagert
+    - vehicle.h : da wir die Informationen von den Fahrzeugen in mehreren Funktionen und Header-Dateien nutzen, haben wir diesen struct auch ausgelagert.
 
-Unsere Arbeitsweise im zweiten Teil der Aufgabe lief deutlich einfacher, da wir schon Plan und Pseudocode hatten.
-Da wir die verschiedenen Teile des Programms gut aufgeteilt hatten, konnten wir queue.c, parkhaus.c, sim_parameters.c und
-statistics.c gut in Einzelarbeit implementieren.
+Unsere Arbeitsweise im zweiten Teil der Aufgabe lief deutlich einfacher, da wir schon einen vollständigen Plan und guten Pseudocode hatten.
+Da wir die verschiedenen Teile des Programms gut aufgeteilt hatten, konnten wir queue.c, parkhaus.c, sim_parameters.c und statistics.c gut in Einzelarbeit implementieren.
 So konnten wir asynchron arbeiten und uns dann mit Reviews gegenseitig korrigieren,
 sodass wir die Grundlagen sicher hatten. 
 
@@ -37,20 +34,21 @@ Dabei sind uns dann, wie zu erwarten, noch weitere Fehler aufgefallen, die wir d
 
 Andere Optionen waren:
 1. Wir haben überlegt, andere Datenstrukturen zu verwenden z.B.:
-    - Für das Parkhaus haben wir uns zwischen einem Array und eine Linkedlist für ein Array entscheide.
+    - Für das Parkhaus haben wir uns zwischen einem Array und einer Linkedlist für ein Array entscheide.
     - Teilweise hatten wir überlegt, kleinere Datentypen zu verwenden um Speicher zu sparen.
+    - Wir hatten überlegt die Fahrzeug structs direkt im Array zu speichern
 2. Wir haben überlegt die Simloop auszulagern um die main noch kürzer zu halten
 
 ## 3. Warum haben Sie sich gegen die anderen Optionen entschieden bzw. für die gewählte Variante gemeinsam entschieden?
 
 1. Warum wir uns für das Array entschieden haben:
-    - Unser Parkhaus hat eine feste Größe, daher passt ein Array perfekt, da es ebenfalls eine feste Größe hat.
-    Der Vorteil einer Linked List wäre daher nicht relevant. Zusätzlich können wir mit einem Array auf jeden Index in O(1) zugreifen,
-    während der Zugriff bei einer Linked List O(n) dauern würde.
-    - Die Verwendung von kleineren Datentypen hätte zu viel Komplexität und potenzielle Fehlerquellen hinzugefügt, was unserer Meinung nach nicht der geringfügigen Menge an gespartem Speicher entspricht.
+    - Unser Parkhaus hat eine festgelegte Größe, die sich im Programmverlauf nicht ändert. Hierfür ist ein Array perfekt geeignet, da es einmal mit dieser Größe initialisiert werden kann.
+    Der Vorteil einer Linked List wäre daher nicht relevant. Zusätzlich können wir mit einem Array auf jeden Index in O(1) zugreifen, während der Zugriff bei einer Linked List O(n) dauern würde.
+    - Für die Datentypen haben wir so gut es geht versucht die Speicherschonenste Option zu wählen. Trotzdem gab es Situationen wo wir lieber auf nochmal sicher gegagen sind und die paar verlorenen Bits in Kauf genommen haben um einen Fehlerfreien Code garantieren zu können. Hier war immer eine Risikoabwägung unsererseits nötig. 
+    - Wir haben uns recht schnell dafür entschieden das Parkhaus als Array, welches Pointer auf die Fahrzeuge enthält zu erstellen. Dies hat den Vorteil, dass nicht für jede Operation ein ganzes Struct ins Array kopiert und an die Funktionen übergeben werden muss, sondern eben nur Pointer auf diese. Das führt zu einer effizienteren Speichernutzung und schnellere Laufzeit. Um einen leeren Platz darstellen zu können, haben wir NULL Pointer benutzt. In der Praxis hat sich dieser Ansatz als gute Entscheidung herausgestellt.
 
 2. Warum wir uns gegen ein extra file für Simloop entschieden haben:
-Wir waren der meinung, dass die extra modularisierung keinen wirkliche mehrwert gebrcaht hätte, und ehr dazu geführt hätte, dass die strukut komplexer und damit 
+Wir waren der Meinung, dass die extra Modularisierung keinen wirkliche Mehrwert gebracht hätte, und eher dazu geführt hätte, dass die Struktur komplexer und damit unleserlicher geworden wäre. Da der Simloop auch nicht sehr lange ist, wird die main.c damit auch nicht unnötig lang.
 
 
 ## 4. Gab es Schwierigkeiten, Herausforderungen bei der Zusammenarbeit?
@@ -58,7 +56,7 @@ Wir waren der meinung, dass die extra modularisierung keinen wirkliche mehrwert 
 Eine Herausforderung bei der Zusammenarbeit war, die Aufgaben fair und gleichmäßig zu verteilen, 
 da wir innerhalb der Gruppe unterschiedlich schnell waren und unterschiedliche Vorkenntnisse mitbrachten.
 Durch den Unterschied an Programmierfähigkeiten, hat sich auch das gegenseitige reviewen als kleine Herausforderung dargestellt, weil die meisten Fehler
-meistens von der selben Person erkannt und kommentiert wurden.
+meistens von der selben Person erkannt und kommentiert wurden. Mit der Zeit hat sich das aber deutlich verbessert, da man gelernt hat, worauf man achten muss und wie man Code am besten lesen kann und da unsere Programmierkentnisse sich ständig verbessert haben.
 
 
 ## 5. Was ist Ihnen im Team einfach gefallen bzw. sehr gut gelungen?
@@ -74,12 +72,15 @@ Wir konnten uns gut auf Lösungen einigen und haben die wichtigen Entscheidungen
 Wir haben uns oft zusammengesetzt, um an den Aufgaben zu arbeiten. 
 Das hat sehr geholfen, dass wir alle am selben Strang ziehen. 
 Aus diesem Grund gab es auch mehrere Branches, die in Zusammenarbeit, aber eben von einem Account committet und gemerget wurden. 
-Dazu sollten aber Anmerkungen in den Commits stehen, damit klar ist, was wir zusammen gemacht haben.
+Dazu sollten aber Anmerkungen in den Commits stehen, damit klar ist, was wir zusammen gemacht haben. Außerdem haben wir im Kanban Board die Tasks immer korrekt verteilt.
 
 ## 6. Technische Schwierigkeiten
 
-Wir hatten auch mit Git das ein oder andere Problem. Z. B. ist es uns passiert, dass wir zwei Branches hatten, welche sich nur durch Groß- und Kleinschreibung unterschieden. 
+Wir hatten auch mit Git das ein oder andere Problem. So ist es und z.B. passiert, dass wir zwei Branches hatten, welche sich nur durch Groß- und Kleinschreibung unterschieden. 
 Dadurch konnten wir lokal nicht mehr pullen, da das Filesystem auf unseren Rechnern case-insensitive ist und somit zwischen den Branches nicht unterscheiden konnte.
 Dies konnten wir lösen, indem wir auf dem Remote den fehlerhaften Branch gelöscht haben und dann mit dem Befehl "git fetch --prune" die gelöschten Branches des Origins synchronisiert haben.
 
-//@Julius explain solution for end element in Array
+Eine andere Schwierigkeit, die wir am Anfang überkommen mussten, war die Frage wie wir durch das Parkhaus Array durchlaufen können. Da die Anzahl der Parkplätze in der main.c gespeichert ist, hätten wir bei jedem Aufruf von Funktionen aus parkhaus.c diesen Wert übergeben müssen. Wir haben uns von Anfang an dagegen entschieden, da dies nur zu einer höheren Komplexität in der Implementierung führt. Wir wollten eine Lösung, die Seperat, nur lokal in parkhaus.c funktioniert, aber trotzdem Arrays jeglicher Größe durchlaufen kann. <br>
+So kamen wir auf die Idee einen "End_Point" einzubauen. Dieser hat die einzigartige vehicle_id = -1 und wird beim initialisieren des Arrays im Index[Anzahl_Parkplätze], also im letzten Parkplatz + 1 gespeichert. <br>
+So müssen wir zum durchlaufen des Arrays nur schauen, ob der aktuelle Wert die Eigenschaft vehicle_id != -1 hat. Hier ist es wichtig, dass die leeren Plätze mit NULL belegt sind und eine Abfrage NULL->vehicle.id nicht möglich ist. Deshalb wird in der while-Schleife erst geprüft, ob der aktuelle Wert == NULL ist und erst wenn dies nicht der Fall wird er dereferenziert. 
+So haben wir eine wie wir finden elegante und vorallem autonome Methode das Array durchzulaufen.

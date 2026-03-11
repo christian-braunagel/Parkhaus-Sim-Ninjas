@@ -85,6 +85,7 @@ FUNCTION int main(int argc, char *argv[]){
 
 int main()
 {
+    printf("\n|========Starting the Parkhaus Simulation for Rauenegg========| \n \n");
     sim_parameters *p_inputs = get_inputs();
     
     // Note: due to changes diverging from the pseudo code in sim_parameters.c get_inputs() handles the repeted input and we dont have to do that in main

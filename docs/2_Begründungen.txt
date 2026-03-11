@@ -47,6 +47,9 @@ da wir innerhalb der Gruppe unterschiedlich schenell und gut im Programmieren si
 Durch den Unterschied an Programmierfähigkeiten, hat sich auch das gegenseitige reviewen als kleine Herausforderung dargestellt, weil die meisten Fehler
 meistens von der selben Person erkannt und kommentiert wurden.
 
+Wir hatten auch in GitHub die Herausforderung, dass branches Lokal und remote andere Namen bekommen haben, weil beispielsweise Groß- und Kleinbuchstabe vertauscht wurden.
+
+
 5. Was ist Ihnen im Team einfach gefallen bzw. sehr gut gelungen?
 Aus dem Grund, dass wir nicht alle gleich gut programmieren können, haben wir noch mehr darauf geachtet, 
 dass jeder trotzdem ähnlich komlexe Aufgaben bekommt und bearbeitet.

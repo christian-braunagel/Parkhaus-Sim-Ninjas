@@ -44,6 +44,10 @@ Andere Optionen waren:
 
 Eine Herausforderung bei der Zusammenarbeit war, die Aufgaben fair und gleichmäßig zu versteilen, 
 da wir innerhalb der Gruppe unterschiedlich schenell und gut im Programmieren sind.
-
+Durch den Unterschied an Programmierfähigkeiten, hat sich auch das gegenseitige reviewen als kleine Herausforderung dargestellt, weil die meisten Fehler
+meistens von der selben Person erkannt und kommentiert wurden.
 
 5. Was ist Ihnen im Team einfach gefallen bzw. sehr gut gelungen?
+Aus dem Grund, dass wir nicht alle gleich gut programmieren können, haben wir noch mehr darauf geachtet, 
+dass jeder trotzdem ähnlich komlexe Aufgaben bekommt und bearbeitet.
+Wenn jemand Fragen hatte oder nicht verstanden hat, wie etwas funktioniert o.ä., lief es sehr gut, dass man sich das gegenseitig erklären konnte.

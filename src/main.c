@@ -24,7 +24,7 @@ int main()
         return 0; // Exit cleanly if user cancelled input or allocation failed
     }
     
-    // Note: due to changes diverging from the pseudo code in sim_parameters.c get_inputs() handles the repeted input and we dont have to do that in main
+    // Note: Due to changes diverging from the pseudocode in sim_parameters.c, get_inputs() handles the repeated input, and we don't have to do that in main.
 
     // seed the random number generator with the provided seed
     srand(p_inputs->rand_seed);

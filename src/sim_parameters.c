@@ -21,14 +21,14 @@
  * @param[in] prompt The message to display to the user when asking for input
  * @param[in] min The minimum valid value for the input (inclusive), set to -1 if there is no minimum
  * @param[in] max The maximum valid value for the input (inclusive), set to -1 if there is no maximum
- * @param[out] stopped Pointer to a flag that is set to 1 if the user wants to stop the input process
+ * @param[out] p_stopped Pointer to a flag that is set to 1 if the user wants to stop the input process
  * @return int The validated integer input from the user
  */
-static int get_int(const char *prompt, int min, int max, char *stopped) //static because this function should not be called by other files
+static int get_int(const char *prompt, int min, int max, char *p_stopped) //static because this function should not be called by other files
 { 
     char input_buffer[100];
     int value = 0;
-    *stopped = 0; //initialize error to 0
+    *p_stopped = 0; //initialize error to 0
 
     while (1)                                                               // Loop until valid input is received
     {                                                             
@@ -46,15 +46,15 @@ static int get_int(const char *prompt, int min, int max, char *stopped) //static
         }
         
 
-        char *endptr;                                                       // pointer to the first character that could not be converted -> shoulf be \n if the entire input was a valid integer
-        value = strtol(input_buffer, &endptr, 10);
+        char *p_end_ptr;                                                    // pointer to the first character that could not be converted -> shoulf be \n if the entire input was a valid integer
+        value = strtol(input_buffer, &p_end_ptr, 10);
 
-        if (*endptr != '\n' || *endptr == input_buffer[0])                  // Check if the conversion was successful and if the entire input was a valid integer
+        if (*p_end_ptr != '\n' || *p_end_ptr == input_buffer[0])            // Check if the conversion was successful and if the entire input was a valid integer
         {
-            if (*endptr == 'q' || *endptr == 'Q')                           // If the user entered 'q' or 'Q', we exit the program so that so we dont have to use Strc + C to stop the program if the user is stuck in an infinite loop of invalid input
+            if (*p_end_ptr == 'q' || *p_end_ptr == 'Q')                     // If the user entered 'q' or 'Q', we exit the program so that so we dont have to use Strc + C to stop the program if the user is stuck in an infinite loop of invalid input
             {                                           
                 fprintf(stderr, ANSI_BOLD ANSI_COLOR_RED "Exiting the program.\n" ANSI_COLOR_RESET);
-                *stopped = 1;
+                *p_stopped = 1;
                 return 0; // return 0; the value isnt important because it wont be used if stpped flag is set to 1
             }
             
@@ -106,38 +106,38 @@ sim_parameters *get_inputs()
         return NULL;
     }
 
-    char stopped = 0; // This flag will be set to 1 if the user wants to stop the input process
+    char input_stopped = 0; // This flag will be set to 1 if the user wants to stop the input process
 
-    p_inputs->time_steps = get_int("Enter the total number of time steps for the simulation: \n", 1, -1, &stopped); //max set to -1 to indicate that there is no maximum value for this parameter
-    if (stopped == 1) 
+    p_inputs->time_steps = get_int("Enter the total number of time steps for the simulation: \n", 1, -1, &input_stopped); //max set to -1 to indicate that there is no maximum value for this parameter
+    if (input_stopped == 1) 
     {
         free(p_inputs);
         return NULL;
     }
     
-    p_inputs->max_parking_spaces = get_int("Enter the maximum number of parking spaces: \n", 1, -1, &stopped); //max set to -1 to indicate that there is no maximum value for this parameter
-    if (stopped == 1) 
+    p_inputs->max_parking_spaces = get_int("Enter the maximum number of parking spaces: \n", 1, -1, &input_stopped); //max set to -1 to indicate that there is no maximum value for this parameter
+    if (input_stopped == 1) 
     {
         free(p_inputs);
         return NULL;
     }
 
-    p_inputs->max_parking_time = get_int("Enter the maximum parking time for a vehicle: \n", 1, -1, &stopped); //max set to -1 to indicate that there is no maximum value for this parameter
-    if (stopped == 1) 
+    p_inputs->max_parking_time = get_int("Enter the maximum parking time for a vehicle: \n", 1, -1, &input_stopped); //max set to -1 to indicate that there is no maximum value for this parameter
+    if (input_stopped == 1) 
     {
         free(p_inputs);
         return NULL;
     }
 
-    p_inputs->arrival_probability = get_int("Enter the arrival probability (0-100): \n", 0, 100, &stopped); //min set to 0 and max set to 100 to indicate that the value must be between 0 and 100
-    if (stopped == 1) 
+    p_inputs->arrival_probability = get_int("Enter the arrival probability (0-100): \n", 0, 100, &input_stopped); //min set to 0 and max set to 100 to indicate that the value must be between 0 and 100
+    if (input_stopped == 1) 
     {
         free(p_inputs);
         return NULL;
     }
 
-    p_inputs->rand_seed = get_int("Enter the random seed for the simulation: \n", -1, -1, &stopped); //min and max set to -1 to indicate that there is no minimum or maximum value for this parameter
-    if (stopped == 1) 
+    p_inputs->rand_seed = get_int("Enter the random seed for the simulation: \n", -1, -1, &input_stopped); //min and max set to -1 to indicate that there is no minimum or maximum value for this parameter
+    if (input_stopped == 1) 
     {
         free(p_inputs);
         return NULL;

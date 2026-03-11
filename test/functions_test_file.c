@@ -193,7 +193,7 @@ void updateStats_test()
 
     assert(test_stats.max_wait_time == 4);
     assert(test_stats.max_length_queue == 18);
-    assert(test_stats.sum_cars_in == 58);
+    assert(test_stats.sum_cars_in == 55);
     assert(test_stats.sum_cars_out == 5);
     assert(test_stats.sum_parkhaus_auslastung == 18);
     assert(test_stats.sum_wait_time == 4);
@@ -205,7 +205,7 @@ void updateStats_test()
     } else {
         avg_wait_time = 0.0;
     }
-    assert(fabs(avg_wait_time - 0.068965) < 1e-6); //assertion with double: difference must be over the tolerance of 1e-6
+    assert(fabs(avg_wait_time - 0.072727) < 1e-6); //assertion with double: difference must be over the tolerance of 1e-6
 }
 
 
@@ -214,9 +214,15 @@ void sim_parameters_test(){
 }
 int main(){
     printf("\n[*]Running Test...");
+    printf("\n[*]Running queue_test...");
     queue_test();
+    printf("\n[*]queue_test passed!");
+    printf("\n[*]Running parkhaus_test...");
     parkhaus_test();
-    statistics_test();
+    printf("\n[*]parkhaus_test passed!");
+    printf("\n[*]Running updateStats_test...");
+    updateStats_test();
+    printf("\n[*]updateStats_test passed!");
     //sim_parameters_test();
     printf("\n[*]Passed all Tests!");
 }

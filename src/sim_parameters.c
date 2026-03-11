@@ -1,4 +1,5 @@
 #include "../include/sim_parameters.h"
+#include "../include/format_def.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -103,9 +104,6 @@ FUNCTION sim_parameters *get_inputs(){
 
 //define Colors and formating for the error messages in get_int
 
-#define ANSI_COLOR_RED     "\x1b[31m"
-#define ANSI_COLOR_RESET   "\x1b[0m"
-#define ANSI_BOLD          "\x1b[1m"
 /** 
  * @brief Reads an integer input from the user with validation
  * 

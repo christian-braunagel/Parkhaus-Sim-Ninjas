@@ -3,6 +3,7 @@
 #include "../include/parkhaus.h"
 #include "../include/statistics.h"
 #include "../include/sim_parameters.h"
+#include "../include/format_def.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -101,7 +102,7 @@ int main()
     queue *parking_queue = init_queue();
     if (parking_queue == NULL)
     {
-        printf("Error initializing the parking queue. \n");
+        fprintf(stderr, ANSI_BOLD ANSI_COLOR_RED "Error initializing the parking queue. \n" ANSI_COLOR_RESET);
         free(p_inputs);
         return 1;
     }
@@ -109,7 +110,7 @@ int main()
     vehicle **parkhaus = init_parkhaus(p_inputs->max_parking_spaces);
     if (parkhaus == NULL)
     {
-        printf("Error initializing the parking garage. \n");
+        fprintf(stderr, ANSI_BOLD ANSI_COLOR_RED "Error initializing the parking garage. \n" ANSI_COLOR_RESET);
         free_queue(&parking_queue);
         free(p_inputs);
         return 1;
@@ -121,7 +122,7 @@ int main()
     createRunningTimeStatsFile(&statistics);
     if(statistics.running_stats_file == NULL)
     {
-        printf("Error creating RunningTimeStats File! \n");
+        fprintf(stderr, ANSI_BOLD ANSI_COLOR_RED "Error creating RunningTimeStats File. \n" ANSI_COLOR_RESET);
         free_Parkhaus(parkhaus);
         free_queue(&parking_queue);
         free(p_inputs);
@@ -138,7 +139,7 @@ int main()
         int num_removed_cars = remove_finished_Cars(parkhaus,current_time);
         if (num_removed_cars == -1)
         {
-            printf("Error removing finished Cars \n");
+            fprintf(stderr, ANSI_BOLD ANSI_COLOR_RED "Error removing finished Cars. \n" ANSI_COLOR_RESET);
             closeRunningTimeStatsFile(&statistics);
             free_Parkhaus(parkhaus);
             free_queue(&parking_queue);
@@ -168,7 +169,7 @@ int main()
                 wait_time = park_Car(parkhaus, vehicle_to_park, current_time);
                 if(wait_time == -1)
                 {
-                    printf("Error parking the car. \n");
+                    fprintf(stderr, ANSI_BOLD ANSI_COLOR_RED "Error parking the Car. \n" ANSI_COLOR_RESET);
                     closeRunningTimeStatsFile(&statistics);
                     free_Parkhaus(parkhaus);
                     free_queue(&parking_queue);
@@ -179,7 +180,7 @@ int main()
             }
             else //if the vehicle_to_park is NULL the dequeue operation failed
             {
-                printf("Error dequeueing the car. \n");
+                fprintf(stderr, ANSI_BOLD ANSI_COLOR_RED "Error dequeueing the Car. \n" ANSI_COLOR_RESET);
                 closeRunningTimeStatsFile(&statistics);
                 free_Parkhaus(parkhaus);
                 free_queue(&parking_queue);
@@ -190,7 +191,7 @@ int main()
         int used_spaces = parkhaus_get_used_Spots(parkhaus);
         if(used_spaces == -1)
         {
-            printf("Error getting the number of used parking spaces. \n");
+            fprintf(stderr, ANSI_BOLD ANSI_COLOR_RED "Error getting the number of used parking spaces. \n" ANSI_COLOR_RESET);
             closeRunningTimeStatsFile(&statistics);
             free_Parkhaus(parkhaus);
             free_queue(&parking_queue);

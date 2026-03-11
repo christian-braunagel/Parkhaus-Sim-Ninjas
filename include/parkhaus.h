@@ -24,7 +24,7 @@ vehicle** init_parkhaus(int Anzahl_Parkplätze);
  * 
  * @param[in] struct vehicle Parkhaus[] is the array to be checked
  * 
- * @return 0/-1 Returns 0 for true (is full) or -1 for false (is not full)
+ * @return 0/-1 Returns 0 for true (is full) or -1 for false (is not full) or for error
 */
 int parkhaus_is_Full(vehicle *pParkhaus[]);
     
@@ -41,7 +41,7 @@ int parkhaus_is_Full(vehicle *pParkhaus[]);
  * 
  * @param[in] int current_time Time since Simulation begin
  * 
- * @return num_removed_Cars returns the number of cars removed during this run
+ * @return num_removed_Cars returns the number of cars removed during this run, -1 for error
 */
 int remove_finished_Cars(vehicle *pParkhaus[], int current_time);
 
@@ -59,7 +59,7 @@ int remove_finished_Cars(vehicle *pParkhaus[], int current_time);
  * @param[in] int current_time Time since Simulation begin
 
  * 
- * @return waitTime or Error(-1) if full
+ * @return waitTime or -1 for error or if full
 */
 int park_Car(vehicle *pParkhaus[], vehicle *pCar, int current_time);
 
@@ -71,7 +71,7 @@ int park_Car(vehicle *pParkhaus[], vehicle *pCar, int current_time);
  * 
  * @param[in] struct vehicle Parkhaus[] Parking garage array to be analyzed
  * 
- * @return used_spaces Number of occupied spaces
+ * @return used_spaces Number of occupied spaces, -1 for error
 */
 int parkhaus_get_used_Spots(vehicle *pParkhaus[]);
 
@@ -82,7 +82,7 @@ int parkhaus_get_used_Spots(vehicle *pParkhaus[]);
  * 
  * @param[in] struct vehicle Parkhaus[] Parking garage array to be freed
  * 
- * @return the Parkhaus Array set to NULL 
+ * @return the Parkhaus Array set to NULL, or NULL for error
 */
 vehicle** free_Parkhaus(vehicle **pParkhaus);
 #endif

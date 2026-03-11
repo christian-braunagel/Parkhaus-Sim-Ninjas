@@ -88,6 +88,11 @@ int main()
     printf("\n|========Starting the Parkhaus Simulation for Rauenegg========| \n \n");
     sim_parameters *p_inputs = get_inputs();
     
+    if (p_inputs == NULL)
+    {
+        return 0; // Exit cleanly if user cancelled input or allocation failed
+    }
+    
     // Note: due to changes diverging from the pseudo code in sim_parameters.c get_inputs() handles the repeted input and we dont have to do that in main
 
     // seed the random number generator with the provided seed
@@ -97,6 +102,7 @@ int main()
     if (parking_queue == NULL)
     {
         printf("Error initializing the parking queue. \n");
+        free(p_inputs);
         return 1;
     }
 
@@ -104,6 +110,8 @@ int main()
     if (parkhaus == NULL)
     {
         printf("Error initializing the parking garage. \n");
+        free_queue(&parking_queue);
+        free(p_inputs);
         return 1;
     }
 
@@ -114,6 +122,9 @@ int main()
     if(statistics.running_stats_file == NULL)
     {
         printf("Error creating RunningTimeStats File! \n");
+        free_Parkhaus(parkhaus);
+        free_queue(&parking_queue);
+        free(p_inputs);
         return 1;
     }
 
@@ -128,6 +139,10 @@ int main()
         if (num_removed_cars == -1)
         {
             printf("Error removing finished Cars \n");
+            closeRunningTimeStatsFile(&statistics);
+            free_Parkhaus(parkhaus);
+            free_queue(&parking_queue);
+            free(p_inputs);
             return -1;
         }
         
@@ -154,6 +169,10 @@ int main()
                 if(wait_time == -1)
                 {
                     printf("Error parking the car. \n");
+                    closeRunningTimeStatsFile(&statistics);
+                    free_Parkhaus(parkhaus);
+                    free_queue(&parking_queue);
+                    free(p_inputs);
                     return 1;
                 }
                 parked_car = 1;
@@ -161,6 +180,10 @@ int main()
             else //if the vehicle_to_park is NULL the dequeue operation failed
             {
                 printf("Error dequeueing the car. \n");
+                closeRunningTimeStatsFile(&statistics);
+                free_Parkhaus(parkhaus);
+                free_queue(&parking_queue);
+                free(p_inputs);
                 return 1;
             }
         }
@@ -168,6 +191,10 @@ int main()
         if(used_spaces == -1)
         {
             printf("Error getting the number of used parking spaces. \n");
+            closeRunningTimeStatsFile(&statistics);
+            free_Parkhaus(parkhaus);
+            free_queue(&parking_queue);
+            free(p_inputs);
             return 1;
         }
         updateStats(&statistics, used_spaces, parked_car, num_removed_cars, parking_queue->size, wait_time, current_time, added_vehicle_to_queue);

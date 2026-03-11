@@ -58,6 +58,49 @@ void test_init(void){
     assert(parkhaus[9] == NULL);
     parkhaus = free_Parkhaus(parkhaus);
 }
+void test_park_Car(void){
+    printf("\n[#]Testing 'park_Car' Function...");
+    vehicle **parkhaus;
+    parkhaus = init(10);
+    vehicle *Car1 = malloc(sizeof(vehicle));
+    Car1->vehicle_id = 1;
+    Car1->time_of_arrival = 1;
+    vehicle *Car2 = malloc(sizeof(vehicle));
+    Car2->vehicle_id = 2;
+    Car2->time_of_arrival = 2;
+
+    assert(parkhaus[0] == NULL); //Testing if the first Spot is empty
+    
+    assert(park_Car(parkhaus, Car1, 2) == 1); //Testing if the waitTime is correct
+    assert(parkhaus[0] != NULL);
+    assert(parkhaus[0]->vehicle_id == 1); //Testing if the first Spot isnt empty and if it contains the right Car
+    assert(parkhaus[0]->time_of_entry == 2);
+
+    assert(park_Car(parkhaus, Car2, 4) == 2); //Testing if the waitTime is correct
+    assert(parkhaus[1] != NULL);
+    assert(parkhaus[1]->vehicle_id == 2); //Testing if the second Spot isnt empty and if it contains the right Car
+    assert(parkhaus[1]->time_of_entry == 4);
+
+    assert(parkhaus[0]->vehicle_id == 1); //Testing that nothing has changed with the first Spot
+
+    parkhaus = free_Parkhaus(parkhaus);
+    assert(park_Car(parkhaus, Car1, 0) == -1); //Testing if Function recognises empty array as Error
+    return;
+}
+void test_isFull(void){
+    printf("\n[#]Testing 'isFull' Function...");
+    vehicle **parkhaus = init(10);
+    assert(isFull(parkhaus) == -1);
+    for(int i=0; i<10; i++){
+        vehicle *Car = malloc(sizeof(vehicle));
+        Car->vehicle_id = i;
+        park_Car(parkhaus, Car, 1);
+    }
+    assert(isFull(parkhaus) == 0);
+
+    parkhaus = free_Parkhaus(parkhaus);
+
+}
 
 //---------------------------------------------------------
 

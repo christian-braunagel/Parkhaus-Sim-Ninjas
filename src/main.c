@@ -1,3 +1,9 @@
+/*
+ * File: main.c
+ * Description: Runs the parking garage simulation.
+ * Initializes inputs, runs simulation loop, and prints results.
+ */
+
 #include "../include/queue.h"
 #include "../include/vehicle.h"
 #include "../include/parkhaus.h"

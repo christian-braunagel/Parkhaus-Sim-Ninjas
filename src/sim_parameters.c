@@ -1,3 +1,9 @@
+/*
+ * File: sim_parameters.c
+ * Description: Handles simulation parameter input and validation.
+ * Reads user settings and saves it in a struct for use in the simulation.
+ */
+
 #include "../include/sim_parameters.h"
 #include "../include/format_def.h"
 #include <stdio.h>

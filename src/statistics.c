@@ -1,3 +1,9 @@
+/*
+ * File: statistics.c
+ * Description: Updates and prints simulation statistics.
+ * Tracks running values and generates final statistics output.
+ */
+
 #include <stdio.h>
 #include "../include/statistics.h"
 #include "../include/parkhaus.h"

@@ -1,3 +1,9 @@
+/*
+ * File: parkhaus.c
+ * Description: Implements parking garage array management.
+ * Provides functions for parked vehicle management.
+ */
+
 #include "../include/vehicle.h"
 #include "../include/parkhaus.h"
 #include <stdlib.h>

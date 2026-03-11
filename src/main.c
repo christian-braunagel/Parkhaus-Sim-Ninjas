@@ -11,6 +11,7 @@ FUNCTION int main(int argc, char *argv[]){
     //inputs
     sim_parameters *inputs = get_inputs()
     
+    
     WHILE inputs is NULL DO //retrys getting the input Parameters until there is a valid input
         PRINT "Retry entering the simulation parameters. \n" 
         inputs = get_inputs()
@@ -81,3 +82,29 @@ FUNCTION int main(int argc, char *argv[]){
     RETURN 0
 }
 */
+
+int main()
+{
+    sim_parameters *p_inputs = get_inputs();
+    
+    // Note: due to changes diverging from the pseudo code in sim_parameters.c get_inputs() handles the repeted input and we dont have to do that in main
+
+    // seed the random number generator with the provided seed
+    srand(p_inputs->rand_seed);
+
+    queue *parking_queue = init_queue();
+    if (parking_queue == NULL)
+    {
+        fprintf(stderr, "Error initializing the parking queue. \n");
+        return 1;
+    }
+
+    vehicle *parkhaus = init_parkhaus(p_inputs->max_parking_spaces);
+    if (parkhaus == NULL)
+    {
+        fprintf(stderr, "Error initializing the parking garage. \n");
+        return 1;
+    }
+
+    
+}

@@ -1,22 +1,25 @@
 # Begründungen und Erklärungen für unser Projekt
 
-## 1. Wie haben Sie die Aufgabenstellung gelöst?
+## 1.0 Lösung der Aufgabenstellung
+>Wie haben wir die Aufgabenstellung gelöst?
 
+### 1.1 Aufgabenteil 1
 Bevor wir beginnen konnten, wirklich autonom zu arbeiten, haben wir Folgendes noch in Zusammenarbeit erledigt:
-    - am Anfang haben wir uns zusammengesetzt und gemeinsam einen Gesamtplan erstellt
-    - wir haben alle Issues im GitHub repo gesammelt um einen Überblick zu bekommen 
-    - ein grundlegendes Flowchart für main erstellt, das alle Funktionen und Logiken des Programms beeinhaltet
-    - festgelegt, dass die Haupt Header-Files Parkhaus, Queue und statistics sind
-    - dann haben wir aufgeteilt, dass Nikolai Schlosser die Queue, Julius Faustmann das Parkhaus und Esther Birngruber die Statistiken macht
-dann konnte jeder von uns an dem Pseudocode seiner Header Datei arbeiten.
+- am Anfang haben wir uns zusammengesetzt und gemeinsam einen Gesamtplan erstellt
+- wir haben alle Issues im GitHub repo gesammelt um einen Überblick zu bekommen 
+- ein grundlegendes Flowchart für main erstellt, das alle Funktionen und Logiken des Programms beeinhaltet
+- festgelegt, dass die Haupt Header-Files Parkhaus, Queue und statistics sind
+- dann haben wir aufgeteilt, dass Nikolai Schlosser die Queue, Julius Faustmann das Parkhaus und Esther Birngruber die Statistiken macht
+Somit konnte jeder von uns mit dem Pseudocode und seiner Header Datei starten.
 
 Für die schnelle Kommunikation haben wir auch eine WhatsApp Gruppe erstellt und uns ggf darüber informiert und Fragen gestellt.
-Wir haben darauf geachtet, dass jeder Merge request von mindestens einer anderen Person (bei wichtigen Merges beide anderen) reviewed und erst dann gemerged wurde.
+Wir haben darauf geachtet, dass jeder Merge-Request von mindestens einer anderen Person (bei wichtigen Merges auch von beiden) reviewed und erst dann gemerged wurde.
 Wenn wir zusammen an Funktionen und Issues gearbeitet haben, haben wir das Größtenteils in den commit messages dazu geschreiben.
 
 Während der Arbeit an unseren Header-Dateien fiel uns auf, dass uns einiges strukturell noch fehlt, wie z.B:
-    - sim_parameters.h und sim_parameters.c : um die eingegebenen Simulationsparameter mehrmals zu nutzen, haben wir das Lesen und speichern dieser Parameter in einer eigenen Datei ausgelagert
-    - vehicle.h : da wir die Informationen von den Fahrzeugen in mehreren Funktionen und Header-Dateien nutzen, haben wir diesen struct auch ausgelagert.
+- sim_parameters.h und sim_parameters.c : um die eingegebenen Simulationsparameter mehrmals zu nutzen, haben wir das Lesen und speichern dieser Parameter in einer eigenen Datei ausgelagert
+- vehicle.h : da wir die Informationen von den Fahrzeugen in mehreren Funktionen und Header-Dateien nutzen, haben wir diesen struct auch ausgelagert.
+### 1.2 Aufgabenteil 2
 
 Unsere Arbeitsweise im zweiten Teil der Aufgabe lief deutlich einfacher, da wir schon einen vollständigen Plan und guten Pseudocode hatten.
 Da wir die verschiedenen Teile des Programms gut aufgeteilt hatten, konnten wir queue.c, parkhaus.c, sim_parameters.c und statistics.c gut in Einzelarbeit implementieren.
@@ -30,7 +33,8 @@ die main zu implementieren, was durch die selbstständige Vorarbeit deutlich ver
 Mit der vorerst fertigen main haben wir dann das Programm endlich zusammengesetzt testen können. 
 Dabei sind uns dann, wie zu erwarten, noch weitere Fehler aufgefallen, die wir dann zusammen fixen konnten.
 
-## 2. Welche anderen Optionen hatten Sie im Team hinsichtlich der Struktur oder Umsetzung gehabt?
+## 2.0 Alternative Optionen
+>Welche anderen Optionen hatten wir hinsichtlich der Struktur oder Umsetzung?
 
 Andere Optionen waren:
 1. Wir haben überlegt, andere Datenstrukturen zu verwenden z.B.:
@@ -39,7 +43,8 @@ Andere Optionen waren:
     - Wir hatten überlegt die Fahrzeug structs direkt im Array zu speichern
 2. Wir haben überlegt die Simloop auszulagern um die main noch kürzer zu halten
 
-## 3. Warum haben Sie sich gegen die anderen Optionen entschieden bzw. für die gewählte Variante gemeinsam entschieden?
+## 3.0 Begründung der Entscheidungen
+>Warum haben wir uns gegen die anderen Optionen entschieden bzw. für die gewählte Variante gemeinsam entschieden?
 
 1. Warum wir uns für das Array entschieden haben:
     - Unser Parkhaus hat eine festgelegte Größe, die sich im Programmverlauf nicht ändert. Hierfür ist ein Array perfekt geeignet, da es einmal mit dieser Größe initialisiert werden kann.
@@ -51,36 +56,45 @@ Andere Optionen waren:
 Wir waren der Meinung, dass die extra Modularisierung keinen wirkliche Mehrwert gebracht hätte, und eher dazu geführt hätte, dass die Struktur komplexer und damit unleserlicher geworden wäre. Da der Simloop auch nicht sehr lange ist, wird die main.c damit auch nicht unnötig lang.
 
 
-## 4. Gab es Schwierigkeiten, Herausforderungen bei der Zusammenarbeit?
+## 4.0 Herausforderungen
+>Gab es Schwierigkeiten, Herausforderungen bei der Zusammenarbeit?
 
-Eine Herausforderung bei der Zusammenarbeit war, die Aufgaben fair und gleichmäßig zu verteilen, 
+- Eine Herausforderung bei der Zusammenarbeit war, die Aufgaben fair und gleichmäßig zu verteilen, 
 da wir innerhalb der Gruppe unterschiedlich schnell waren und unterschiedliche Vorkenntnisse mitbrachten.
 Durch den Unterschied an Programmierfähigkeiten, hat sich auch das gegenseitige reviewen als kleine Herausforderung dargestellt, weil die meisten Fehler
 meistens von der selben Person erkannt und kommentiert wurden. Mit der Zeit hat sich das aber deutlich verbessert, da man gelernt hat, worauf man achten muss und wie man Code am besten lesen kann und da unsere Programmierkentnisse sich ständig verbessert haben.
 
+- Zeitmanagment war für uns auch eine Herausforderung, da wir nebenbei auch viel Zeit in die Anderen Fächer investieren mussten. Auch haben wir am Anfang unterschätzt wie lange es dauert, alles richtig zu testen, GitHub zu pflegen und die Dokumentation zu schreiben.
 
-## 5. Was ist Ihnen im Team einfach gefallen bzw. sehr gut gelungen?
+- Auch mussten wir lernen wie man Online Recourcen und KI, sinnvoll nutzt ohne sich zu sehr darauf zu verlassen oder den code einfach zu kopieren. Wir haben KI zur Wissensaneignung und Recherche von Funktionen und Algorithmen genutzt, aber immer darauf geachtet, dass wir den Code selbst schreiben und verstehen.
 
-Aus dem Grund, dass wir nicht alle gleich gut programmieren können, haben wir noch mehr darauf geachtet, 
-dass jeder trotzdem ähnlich komplexe Aufgaben bekommt und bearbeitet.
 
-Wenn jemand Fragen hatte oder die Funktionsweise nicht verstand, konnten wir uns alles gegenseitig gut erklären. 
 
-Auch hatten wir das Gefühl, dass die Arbeitsteilung sehr gut gelaufen ist und niemand über-/unterfordert war.
-Wir konnten uns gut auf Lösungen einigen und haben die wichtigen Entscheidungen immer zusammen getroffen. Generell war die Zusammenarbeit sehr harmonisch, wir hatten keine großen Meinungsverschiedenheiten und sind immer schnell auf einen Nenner gekommen.
+## 5.0 Positive Erfahrungen in der Teamarbeit
+>Was ist uns im Team einfach gefallen bzw. sehr gut gelungen?
 
-Wir haben uns oft zusammengesetzt, um an den Aufgaben zu arbeiten. 
+- Aus dem Grund, dass wir nicht alle gleich gut programmieren können, haben wir noch mehr darauf geachtet, dass jeder trotzdem ähnlich komplexe Aufgaben bekommt und bearbeitet.
+
+- Wenn jemand Fragen hatte oder die Funktionsweise nicht verstand, konnten wir uns alles gegenseitig gut erklären. 
+
+- Auch hatten wir das Gefühl, dass die Arbeitsteilung sehr gut gelaufen ist und niemand über-/unterfordert war. Wir konnten uns gut auf Lösungen einigen und haben die wichtigen Entscheidungen immer zusammen getroffen. Generell war die Zusammenarbeit sehr harmonisch, wir hatten keine großen Meinungsverschiedenheiten und sind immer schnell auf einen Nenner gekommen.
+
+- Wir haben uns oft zusammengesetzt, um an den Aufgaben zu arbeiten. 
 Das hat sehr geholfen, dass wir alle am selben Strang ziehen. 
 Aus diesem Grund gab es auch mehrere Branches, die in Zusammenarbeit, aber eben von einem Account committet und gemerget wurden. 
 Dazu sollten aber Anmerkungen in den Commits stehen, damit klar ist, was wir zusammen gemacht haben. Außerdem haben wir im Kanban Board die Tasks immer korrekt verteilt.
 
-## 6. Technische Schwierigkeiten
+## 6.0 Technische Schwierigkeiten
 
+### 6.1 Git-Branches auf einem case-insensitiven Dateisystem
 Wir hatten auch mit Git das ein oder andere Problem. So ist es und z.B. passiert, dass wir zwei Branches hatten, welche sich nur durch Groß- und Kleinschreibung unterschieden. 
 Dadurch konnten wir lokal nicht mehr pullen, da das Filesystem auf unseren Rechnern case-insensitive ist und somit zwischen den Branches nicht unterscheiden konnte.
-Dies konnten wir lösen, indem wir auf dem Remote den fehlerhaften Branch gelöscht haben und dann mit dem Befehl "git fetch --prune" die gelöschten Branches des Origins synchronisiert haben.
+Dies konnten wir lösen, indem wir auf dem Remote den fehlerhaften Branch gelöscht haben und dann mit dem Befehl 
+`git fetch --prune`
+ die gelöschten Branches des Origins synchronisiert haben.
 
+### 6.2 Iteration über das Parkhaus-Array
 Eine andere Schwierigkeit, die wir am Anfang überkommen mussten, war die Frage wie wir durch das Parkhaus Array durchlaufen können. Da die Anzahl der Parkplätze in der main.c gespeichert ist, hätten wir bei jedem Aufruf von Funktionen aus parkhaus.c diesen Wert übergeben müssen. Wir haben uns von Anfang an dagegen entschieden, da dies nur zu einer höheren Komplexität in der Implementierung führt. Wir wollten eine Lösung, die Seperat, nur lokal in parkhaus.c funktioniert, aber trotzdem Arrays jeglicher Größe durchlaufen kann. <br>
-So kamen wir auf die Idee einen "End_Point" einzubauen. Dieser hat die einzigartige vehicle_id = -1 und wird beim initialisieren des Arrays im Index[Anzahl_Parkplätze], also im letzten Parkplatz + 1 gespeichert. <br>
-So müssen wir zum durchlaufen des Arrays nur schauen, ob der aktuelle Wert die Eigenschaft vehicle_id != -1 hat. Hier ist es wichtig, dass die leeren Plätze mit NULL belegt sind und eine Abfrage NULL->vehicle.id nicht möglich ist. Deshalb wird in der while-Schleife erst geprüft, ob der aktuelle Wert == NULL ist und erst wenn dies nicht der Fall wird er dereferenziert. 
+So kamen wir auf die Idee einen "End_Point" einzubauen. Dieser hat die einzigartige `vehicle_id = -1` und wird beim initialisieren des Arrays im Index[Anzahl_Parkplätze], also im letzten Parkplatz + 1 gespeichert. <br>
+So müssen wir zum durchlaufen des Arrays nur schauen, ob der aktuelle Wert die Eigenschaft `vehicle_id != -1` hat. Hier ist es wichtig, dass die leeren Plätze mit NULL belegt sind und eine Abfrage `NULL->vehicle.id` nicht möglich ist. Deshalb wird in der while-Schleife erst geprüft, ob der aktuelle Wert == NULL ist und erst wenn dies nicht der Fall wird er dereferenziert. 
 So haben wir eine wie wir finden elegante und vorallem autonome Methode das Array durchzulaufen.

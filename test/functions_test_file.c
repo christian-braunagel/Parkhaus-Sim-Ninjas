@@ -209,8 +209,10 @@ void sim_parameters_test(){
 
 }
 int main(){
+    printf("\n[*]Running Test...");
     queue_test();
-    //parkhaus_test();
-    //statistics_test();
+    parkhaus_test();
+    statistics_test();
     //sim_parameters_test();
+    printf("\n[*]Passed all Tests!");
 }

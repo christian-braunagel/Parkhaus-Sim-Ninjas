@@ -37,7 +37,7 @@ Dabei sind uns dann, wie zu erwarten, noch weitere Fehler aufgefallen, die wir d
 
 Insgesamt haben wir herausgefunden, dass für unser Team vor allem eine klare und strukturierte Arbeitsweise am besten funktioniert hat. Zunächst haben wir die Umsetzung gemeinsam geplant und die Aufgaben sinnvoll aufgeteilt. Anschließend wurden die einzelnen Teilbereiche eigenständig bearbeitet, gegenseitig reviewed und am Ende gemeinsam integriert und getestet.
 
-So in der Form haben wir beide Aufgabenteile gelöst.
+Auf diese Weise haben wir beide Aufgabenteile strukturiert und effizient gelöst.
 
 ## 2.0 Alternative Optionen
 >Welche anderen Optionen hatten wir hinsichtlich der Struktur oder Umsetzung?

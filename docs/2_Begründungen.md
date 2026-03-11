@@ -44,10 +44,10 @@ Auf diese Weise haben wir beide Aufgabenteile strukturiert und effizient gelöst
 
 Andere Optionen waren:
 1. Wir haben überlegt, andere Datenstrukturen zu verwenden z.B.:
-    - Für das Parkhaus haben wir uns zwischen einem Array und einer Linkedlist für das Array entschieden.
+    - Für das Parkhaus haben wir zwischen einem Array und einer Linked List abgewogen und uns schließlich für das Array entschieden.
     - Teilweise hatten wir überlegt, kleinere Datentypen zu verwenden um Speicher zu sparen.
-    - Wir hatten überlegt die Fahrzeug structs direkt im Array zu speichern
-2. Wir haben überlegt die Simloop auszulagern um die main noch kürzer zu halten
+    - Wir hatten außerdem überlegt, die Fahrzeug-Structs direkt im Array zu speichern.
+2. Wir haben auch überlegt die Simulationsschleife auszulagern, um die main noch kürzer zu halten.
 
 ## 3.0 Begründung der Entscheidungen
 >Warum haben wir uns gegen die anderen Optionen entschieden bzw. für die gewählte Variante gemeinsam entschieden?
@@ -103,7 +103,7 @@ Dies konnten wir lösen, indem wir auf dem Remote den fehlerhaften Branch gelös
 Eine andere Schwierigkeit, die wir am Anfang überkommen mussten, war die Frage wie wir durch das Parkhaus Array durchlaufen können. Da die Anzahl der Parkplätze in der main.c gespeichert ist, hätten wir bei jedem Aufruf von Funktionen aus parkhaus.c diesen Wert übergeben müssen. Wir haben uns von Anfang an dagegen entschieden, da dies nur zu einer höheren Komplexität in der Implementierung führt. Wir wollten eine Lösung, die seperat, nur lokal in parkhaus.c funktioniert, aber trotzdem Arrays jeglicher Größe durchlaufen kann.
 
 
-So kamen wir auf die Idee einen "End_Point" einzubauen. Dieser hat die einzigartige `vehicle_id = -1` und wird beim initialisieren des Arrays im Index[Anzahl_Parkplätze], also im letzten Parkplatz + 1 gespeichert.
+So kamen wir auf die Idee einen "End-Point" einzubauen. Dieser hat die einzigartige `vehicle_id = -1` und wird beim initialisieren des Arrays im Index Anzahl_Parkplätze, also im letzten Parkplatz + 1 gespeichert.
 
 
 So müssen wir zum durchlaufen des Arrays nur schauen, ob der aktuelle Wert die Eigenschaft `vehicle_id != -1` hat. Hier ist es wichtig, dass die leeren Plätze mit NULL belegt sind und eine Abfrage `NULL->vehicle.id` nicht möglich ist. Deshalb wird in der while-Schleife erst geprüft, ob der aktuelle Wert == NULL ist und erst wenn dies nicht der Fall wird er dereferenziert. 

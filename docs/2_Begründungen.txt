@@ -38,14 +38,15 @@ Dabei sind uns dann, wie zu erwarten, noch weitere Fehler aufgefallen, die wir d
 Andere Optionen waren:
     1. Wir haben überlegt, andere Datenstrukturen zu verwenden z.B.:
         - für das Parkhaus eine linked list anstelle eines Arrays
-        - 
-    2. 
+    2. Wir haben überlegt die Simloop auszulagern um die main noch kürzer zu halten
 
 3. Warum haben Sie sich gegen die anderen Optionen entschieden bzw. für die gewählte Variante gemeinsam entschieden?
 
     1. Warum wir uns für das Array entschieden haben:
         Arrays haben eine feste größe so wie unser Parkhaus auch somit wäre der vorteil der Linked list nicht relvant.
         und weil wir so auf jeden Index in o(1) zugreifen können. Bei der linked list könnte man auf die Indices nur in o(n) zugreifen
+    2. Warum wir uns gegen ein extra file für Simloop entschieden haben:
+        Wir waren der meinung, dass die extra modularisierung keinen wirkliche mehrwert gebrcaht hätte, und ehr dazu geführt hätte, dass die strukut komplexer und damit 
 
 
 4. Gab es Schwierigkeiten, Herausforderungen bei der Zusammenarbeit?
@@ -66,6 +67,11 @@ Wenn jemand Fragen hatte oder nicht verstanden hat, wie etwas funktioniert o.ä.
 Auch hatten wir das Gefühl, dass die Arbeitsteilung sehr gut gelaufen ist und niemand über-/unterfordert war.
 Wir konnten uns gut auf Lösungen einigen und haben die wichtigen Entscheidungen immer zusammen getroffen. 
 Generell war die Zusammenarbeit sehr harmonisch, wir hatten keine großen Meinungsverschiedenheiten und sind immer schnell auf einen Nenner gekommen.
+
+Wir haben uns oft zusammengesetzt, um an den Aufgaben zu arbeiten. 
+Das hat sehr geholfen, dass wir alle am selben Strang ziehen. 
+Aus diesem Grund gab es auch mehrere Branches, die in Zusammenarbeit, aber eben von einem Account committet und gemerget wurden. 
+Dazu sollten aber Anmerkungen in den Commits stehen, damit klar ist, was wir zusammen gemacht haben.
 
 6. Technische Schwierigkeiten
 

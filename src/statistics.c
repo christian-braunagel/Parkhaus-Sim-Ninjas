@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <sys/stat.h>
 #include "../include/statistics.h"
 #include "../include/parkhaus.h"
 #include "../include/sim_parameters.h"
@@ -171,6 +172,12 @@ void printRuntimeStats (const stats *pstats, const sim_parameters *pSim_paramete
 void createRunningTimeStatsFile(stats *pstats){
     char filename [50];
     int counter = 1;
+    struct stat st = {0};
+
+    if (stat("outputs", &st) == -1) //check if folder 'Outputs' exists. If not create the folder
+    {
+        mkdir("outputs", 0777);
+    }
 
     while (1){
         sprintf(filename, "outputs/running_stats_%d.txt", counter);
@@ -237,6 +244,12 @@ void printFinalStats (const stats *pstats, const sim_parameters *pSim_parameters
 void writeFinalStatsToFile (const stats *pstats, const sim_parameters *pSim_parameters){
     char filename [50];
     int counter = 1;
+    struct stat st = {0};
+
+    if (stat("outputs", &st) == -1) //check if folder 'Outputs' exists. If not create the folder
+    {
+        mkdir("outputs", 0777);
+    }
 
     while (1){
         sprintf(filename, "outputs/final_stats_%d.txt", counter);

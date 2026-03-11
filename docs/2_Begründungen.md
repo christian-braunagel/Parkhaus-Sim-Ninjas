@@ -9,7 +9,7 @@ Bevor wir beginnen konnten, wirklich autonom zu arbeiten, haben wir Folgendes no
 - Alle Issues im GitHub Repo gesammelt um einen Überblick zu bekommen.
 - Ein grundlegendes Flowchart für main erstellt, das alle grundlegenden Funktionen und Logiken des Programms beinhaltet.
 - Die grundlegende Modulstruktur mit Parkhaus, Queue und Statistik festgelegt.
-- Dann haben wir aufgeteilt, dass Nikolai Schlosser die Queue, Julius Faustmann das Parkhaus und Esther Birngruber die Statistiken macht
+- Anschließend haben wir die Aufgaben so aufgeteilt, dass Nikolai Schlosser die Queue, Julius Faustmann das Parkhaus und Esther Birngruber die Statistik übernommen hat.
 Somit konnte jeder von uns mit dem Pseudocode und seiner Header Datei starten.
 
 Für die schnelle Kommunikation haben wir auch eine WhatsApp Gruppe erstellt und uns ggf darüber informiert und Fragen gestellt.
@@ -93,18 +93,18 @@ Dazu sollten aber Anmerkungen in den Commits stehen, damit klar ist, was wir zus
 ## 6.0 Technische Schwierigkeiten
 
 ### 6.1 Git-Branches auf einem case-insensitiven Dateisystem
-Wir hatten auch mit Git das ein oder andere Problem. So ist es und z.B. passiert, dass wir zwei Branches hatten, welche sich nur durch Groß- und Kleinschreibung unterschieden. 
+Ein größeres Problem war, dass wir zwei Branches hatten, welche sich nur durch Groß- und Kleinschreibung unterschieden. 
 Dadurch konnten wir lokal nicht mehr pullen, da das Filesystem auf unseren Rechnern case-insensitive ist und somit zwischen den Branches nicht unterscheiden konnte.
 Dies konnten wir lösen, indem wir auf dem Remote den fehlerhaften Branch gelöscht haben und dann mit dem Befehl 
 `git fetch --prune`
  die gelöschten Branches des Origins synchronisiert haben.
 
 ### 6.2 Iteration über das Parkhaus-Array
-Eine andere Schwierigkeit, die wir am Anfang überkommen mussten, war die Frage wie wir durch das Parkhaus Array durchlaufen können. Da die Anzahl der Parkplätze in der main.c gespeichert ist, hätten wir bei jedem Aufruf von Funktionen aus parkhaus.c diesen Wert übergeben müssen. Wir haben uns von Anfang an dagegen entschieden, da dies nur zu einer höheren Komplexität in der Implementierung führt. Wir wollten eine Lösung, die seperat, nur lokal in parkhaus.c funktioniert, aber trotzdem Arrays jeglicher Größe durchlaufen kann.
+Eine andere Schwierigkeit, die wir am Anfang überkommen mussten, war die Frage wie wir durch das Parkhaus Array durchlaufen können. Da die Anzahl der Parkplätze in der main.c gespeichert ist, hätten wir bei jedem Aufruf von Funktionen aus parkhaus.c diesen Wert übergeben müssen. Wir haben uns von Anfang an dagegen entschieden, da dies nur zu einer höheren Komplexität in der Implementierung führt. Wir wollten eine Lösung, die separat, nur lokal in parkhaus.c funktioniert, aber trotzdem Arrays jeglicher Größe durchlaufen kann.
 
 
 So kamen wir auf die Idee einen "End-Point" einzubauen. Dieser hat die einzigartige `vehicle_id = -1` und wird beim initialisieren des Arrays im Index Anzahl_Parkplätze, also im letzten Parkplatz + 1 gespeichert.
 
 
 So müssen wir zum durchlaufen des Arrays nur schauen, ob der aktuelle Wert die Eigenschaft `vehicle_id != -1` hat. Hier ist es wichtig, dass die leeren Plätze mit NULL belegt sind und eine Abfrage `NULL->vehicle.id` nicht möglich ist. Deshalb wird in der while-Schleife erst geprüft, ob der aktuelle Wert == NULL ist und erst wenn dies nicht der Fall wird er dereferenziert. 
-So haben wir eine wie wir finden elegante und vorallem autonome Methode das Array durchzulaufen.
+So haben wir eine wie wir finden elegante und vor allem autonome Methode das Array durchzulaufen.

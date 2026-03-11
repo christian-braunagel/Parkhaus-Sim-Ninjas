@@ -2,7 +2,7 @@ Begründungen und Erklärungen für unser Projekt:
 
 1. Wie haben Sie die Aufgabenstellung gelöst?
 
-bevor wir beginnen konnten wirklich autonom zu arbeiten, haben wir folgendes noch in Zusammenarbeit erledigt:
+Bevor wir beginnen konnten, wirklich autonom zu arbeiten, haben wir Folgendes noch in Zusammenarbeit erledigt:
     - am Anfang haben wir uns zusammengesetzt und gemeinsam einen Plan erstellt
     - wir haben alle Issues im GitHub repo gesammelt um einen Überblick zu bekommen 
     - ein grundlegendes Flowchart für main erstellt, das alle Funktionen und Logiken des Programms beinhaltet
@@ -57,9 +57,15 @@ meistens von der selben Person erkannt und kommentiert wurden.
 
 
 5. Was ist Ihnen im Team einfach gefallen bzw. sehr gut gelungen?
+
 Aus dem Grund, dass wir nicht alle gleich gut programmieren können, haben wir noch mehr darauf geachtet, 
-dass jeder trotzdem ähnlich komlexe Aufgaben bekommt und bearbeitet.
+dass jeder trotzdem ähnlich komplexe Aufgaben bekommt und bearbeitet.
+
 Wenn jemand Fragen hatte oder nicht verstanden hat, wie etwas funktioniert o.ä., lief es sehr gut, dass man sich das gegenseitig erklären konnte.
+
+Auch hatten wir das Gefühl, dass die Arbeitsteilung sehr gut gelaufen ist und niemand über-/unterfordert war.
+Wir konnten uns gut auf Lösungen einigen und haben die wichtigen Entscheidungen immer zusammen getroffen. 
+Generell war die Zusammenarbeit sehr harmonisch, wir hatten keine großen Meinungsverschiedenheiten und sind immer schnell auf einen Nenner gekommen.
 
 6. Technische Schwierigkeiten
 

@@ -1,3 +1,9 @@
+/*
+ * File: statistics.c
+ * Description: Updates and prints simulation statistics.
+ * Tracks running values and generates final statistics output.
+ */
+
 #include <stdio.h>
 #include <sys/stat.h>
 #include "../include/statistics.h"

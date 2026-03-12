@@ -84,7 +84,7 @@ int main()
         if (random_arrival <= p_inputs->arrival_probability)
         {
             int random_park_time = rand() % p_inputs->max_parking_time + 1; // Generate a random number between 0 and max_parking_time.
-            enqueue(parking_queue, car_id_counter, random_park_time, current_time);
+            enqueue(p_parking_queue, car_id_counter, random_park_time, current_time);
             car_id_counter++;
             added_vehicle_to_queue = 1;
         }

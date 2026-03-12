@@ -9,6 +9,8 @@
 #include "../include/statistics.h"
 #include "../include/parkhaus.h"
 #include "../include/sim_parameters.h"
+#include "../include/format_def.h"
+
 
 
  void updateStats (stats *pstats, int parked_cars, int cars_in, int cars_out, int length_queue, int last_wait_time, int current_time, int car_in_queue){
@@ -46,7 +48,7 @@ void printRuntimeStats (const stats *pstats, const sim_parameters *pSim_paramete
 
     printf("\n\n%-25s %-d", "Zeit seit Sim.Beginn:", pstats -> current_time);
     printf("\n%-25s %-d von %d Plaetze belegt", "Parkhausauslastung:", pstats -> parked_cars, pSim_parameters->max_parking_spaces);
-    printf("\n%-25s +%-d / -%d", "Autos rein/raus: ", pstats -> cars_in, pstats -> cars_out);
+    printf("\n%-25s" ANSI_COLOR_GREEN " +%-d" ANSI_COLOR_RESET "/" ANSI_COLOR_RED"-%d" ANSI_COLOR_RESET, "Autos rein/raus: ", pstats -> cars_in, pstats -> cars_out);
     printf("\n%-25s %-d Autos + %u neue Autos", "Laenge Warteschlange:", pstats -> length_queue, pstats -> car_in_queue);
     if(pstats->last_wait_time == -1){
         printf("\n%-25s %c", "Letzte Wartezeit:", '-');
@@ -130,7 +132,7 @@ void printFinalStats (const stats *pstats, const sim_parameters *pSim_parameters
         avg_wait_time = 0.0;
     }
     printf("\n%-36s %.2f Minuten", "Wartezeit Ø:", avg_wait_time);
-    printf("\n%-35s +%d/-%d", "ges. Anzahl Fahrzeuge rein/raus:", pstats->sum_cars_in, pstats->sum_cars_out);
+    printf("\n%-35s" ANSI_COLOR_GREEN " +%d"ANSI_COLOR_RESET "/" ANSI_COLOR_RED"-%d"ANSI_COLOR_RESET, "ges. Anzahl Fahrzeuge rein/raus:", pstats->sum_cars_in , pstats->sum_cars_out);
 
     printf ("\n\n|");
     for (int i=0; i<60; i++){

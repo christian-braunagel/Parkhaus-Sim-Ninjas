@@ -184,7 +184,11 @@ void writeFinalStatsToFile (const stats *p_stats, const sim_parameters *p_sim_pa
     FILE *p_final_stats = fopen (filename, "w");
 
     fprintf (p_final_stats,"\n\n|");
-    for (int i=0; i<60; i++){
+    for (int i=0; i<16; i++){
+        fprintf(p_final_stats,"=");
+    }
+    fprintf(p_final_stats,"FINAL SIMULATION STATISTICS");
+    for (int i=0; i<17; i++){
         fprintf(p_final_stats,"=");
     }
     fprintf (p_final_stats,"|");
@@ -211,7 +215,7 @@ void writeFinalStatsToFile (const stats *p_stats, const sim_parameters *p_sim_pa
     fprintf(p_final_stats,"\n%-36s %.2f Minuten", "Wartezeit Ø:", avg_wait_time);
     fprintf(p_final_stats,"\n%-35s +%d/-%d", "ges. Anzahl Fahrzeuge rein/raus:", p_stats->sum_cars_entered, p_stats->sum_cars_exited);
 
-    fprintf (p_final_stats,"\n|");
+    fprintf (p_final_stats,"\n\n|");
     for (int i=0; i<60; i++){
         fprintf(p_final_stats,"=");
     }

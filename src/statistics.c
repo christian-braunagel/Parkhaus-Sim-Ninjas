@@ -37,7 +37,7 @@ void printRuntimeStats (const stats *pstats, const sim_parameters *pSim_paramete
     }
     printf ("|");
 
-    printf("\n\n%-25s %-d", "Zeit seit Sim.Beginn:", pstats -> current_time);
+    printf("\n\n%-25s %-d Minuten", "Zeit seit Sim.Beginn:", pstats -> current_time);
     printf("\n%-25s %-d von %d Plaetze belegt", "Parkhausauslastung:", pstats -> parked_cars, pSim_parameters->max_parking_spaces);
     printf("\n%-25s +%-d / -%d", "Autos rein/raus: ", pstats -> cars_in, pstats -> cars_out);
     printf("\n%-25s %-d Autos + %u neue Autos", "Laenge Warteschlange:", pstats -> length_queue, pstats -> car_in_queue);
@@ -149,7 +149,7 @@ void writeFinalStatsToFile (const stats *pstats, const sim_parameters *pSim_para
     }
     fprintf (final_stats,"|");
 
-    fprintf(final_stats,"\n\n%-35s %d", "Simulationsdauer:", pSim_parameters->time_steps);
+    fprintf(final_stats,"\n\n%-35s %d Minuten", "Simulationsdauer:", pSim_parameters->time_steps);
 
     double avg_occupacy =  (double)pstats->sum_parkhaus_auslastung / (pSim_parameters->time_steps * pSim_parameters->max_parking_spaces) * 100;
 

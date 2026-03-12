@@ -42,4 +42,4 @@ run-test: $(TEST_TARGET)
 
 # Aufraeumen
 clean:
-	rm -rf $(OBJ_DIR) $(MAIN_TARGET) $(TEST_TARGET) Makefile_test
+	rm -rf $(OBJ_DIR) $(MAIN_TARGET) $(TEST_TARGET)

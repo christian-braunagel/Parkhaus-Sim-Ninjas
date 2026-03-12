@@ -51,11 +51,21 @@ void printRuntimeStats (const stats *p_stats, const sim_parameters *p_sim_parame
     
     printf("\n%-26s", "Auslastung in Prozent:");
     int occupancy_percent = 0;
+    int occupancy_bar_length = 30;
+    int filled_length = 0;
     if (p_sim_parameters->max_parking_spaces > 0){
         occupancy_percent = (int)((double)p_stats->parked_car_count / p_sim_parameters->max_parking_spaces * 100);
-        printf("%d%%  ", occupancy_percent);
+        printf("%d%% ", occupancy_percent);
+        filled_length = occupancy_bar_length * occupancy_percent / 100;
+        for (int i = 0; i < filled_length; i++) {
+            printf(ANSI_COLOR_GREEN "■" ANSI_COLOR_RESET);
+        }
+        for (int i = filled_length; i < occupancy_bar_length; i++) {
+            printf(ANSI_COLOR_RED "□" ANSI_COLOR_RESET);
+        }
+    } else {
+        printf("0%%  ");
     }
-
 
     printf("\n%-25s" ANSI_COLOR_GREEN " +%-d" ANSI_COLOR_RESET "/" ANSI_COLOR_RED"-%d" ANSI_COLOR_RESET, "Autos rein/raus: ", p_stats -> cars_entered, p_stats -> cars_exited);
     printf("\n%-25s %-d Autos + %u neue Autos", "Laenge Warteschlange:", p_stats -> queue_length, p_stats -> new_cars_in_queue);

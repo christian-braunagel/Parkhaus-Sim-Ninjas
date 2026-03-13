@@ -89,15 +89,15 @@ void createRunningTimeStatsFile(stats *p_stats){
         file_counter ++;
     }
     p_stats->p_running_stats_file = fopen(filename, "w");
-    fprintf(p_stats->p_running_stats_file, "%-18s %-15s %-15s %-12s %-16s %-17s %-18s",
-        "|  Time stamp: |", "Parked cars: |", "new cars in: |", "cars out: |", "length queue: |", "cars in queue: |", "last wait time: |");
+    fprintf(p_stats->p_running_stats_file, "%-17s %-16s %-15s %-12s %-16s %-17s",
+        "|  Time stamp: |", "Parked cars:  |", "new cars in: |", "cars out: |", "length queue: |", "last wait time: |");
 
     printf("Created file: %s", filename);
     }
 
 void writeRunningTimeStatsToFile(const stats *p_stats){
-    fprintf(p_stats->p_running_stats_file, "\n%-3c%-12d%-2c %-14d%-2c %-13d%-2c %-10d%-2c %-14d%-2c %+-15d%-3c", 
-        '|', p_stats -> current_time, '|', p_stats -> parked_car_count, '|', p_stats -> cars_entered, '|', p_stats -> cars_exited, '|', p_stats -> queue_length, '|', p_stats -> new_cars_in_queue, '|');
+    fprintf(p_stats->p_running_stats_file, "\n%-3c%-12d%-2c %-14d%-2c %-13d%-2c %-10d%-2c %-2d %c%+d%-8c%-3c", 
+        '|', p_stats -> current_time, '|', p_stats -> parked_car_count, '|', p_stats -> cars_entered, '|', p_stats -> cars_exited, '|', p_stats -> queue_length, '(', p_stats -> new_cars_in_queue,')', '|');
     if (p_stats->last_wait_time == -1){
         fprintf(p_stats->p_running_stats_file, "%-16c%-2c", '-', '|');
     }else{

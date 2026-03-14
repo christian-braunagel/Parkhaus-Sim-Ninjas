@@ -36,7 +36,7 @@ run_test: test
 	./test/functions_test
 
 clean:
-	rm -rf obj/* main tests/functions_test
+	rm -rf obj/* main test/functions_test
 
 deepclean: clean
 	rm -rf outputs/*.txt

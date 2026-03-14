@@ -33,4 +33,4 @@ clean:
 	rm -rf obj/* main tests/functions_test
 
 deepclean: clean
-	rm -rf outputs/
+	rm -rf outputs/*.txt

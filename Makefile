@@ -8,6 +8,9 @@ all: main
 main: $(main_objs)
 	gcc -Wall -Wextra -Iinclude -o main $(main_objs)
 
+run: main
+	./main
+
 obj/main.o: src/main.c
 	gcc -Wall -Wextra -Iinclude -c src/main.c -o obj/main.o
 
@@ -28,6 +31,9 @@ obj/functions_test_file.o: test/functions_test_file.c
 
 test: $(test_objs)
 	gcc -Wall -Wextra -o test/functions_test $(test_objs)
+
+run_test: test
+	./test/functions_test
 
 clean:
 	rm -rf obj/* main tests/functions_test

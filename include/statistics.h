@@ -54,7 +54,8 @@ void updateStats(stats *p_stats, int parked_car_count, int cars_entered, int car
  * 
  * this function takes the current variables for the statistics and prints it in the Terminal
  * 
- * @param[in]   stats               struct with dynmaic statistic values collected during simulation 
+ * @param[in]   stats               struct with dynmaic statistic values collected during simulation
+ * @param[in]   sim_parameters      struct with simulation parameters
  * 
  * @return      this function does not return a value
 */
@@ -62,6 +63,10 @@ void printRuntimeStats(const stats *p_stats, const sim_parameters *p_sim_paramet
 
 /**
  * @brief       creates file to write runnning time stats into it
+ *
+ * this function creates a new .txt file in which the running time statistics can be written into
+ *
+ * @param[in]   stats               struct with dynmaic statistic values collected during simulation
  * 
  * this function creates a new .txt file in which the running time statistics can be written into
  * the file is stored 
@@ -96,6 +101,7 @@ void closeRunningTimeStatsFile(stats *p_stats);
  * it also calculates the average values based on the Simulation time
  * 
  * @param[in]   stats               struct with dynmaic statistic values collected during simulation 
+ * @param[in]   sim_parameters      struct with simulation parameters
  * 
  * @return      this function does not return a value
  */

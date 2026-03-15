@@ -18,4 +18,4 @@ typedef struct sim_parameters { // Struct to hold the simulation parameters that
  */
 sim_parameters *get_inputs();
 
-#endif // SIM_INPUTS_H
+#endif

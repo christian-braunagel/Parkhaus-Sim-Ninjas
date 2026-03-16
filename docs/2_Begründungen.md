@@ -37,7 +37,7 @@ Dabei sind uns dann, wie zu erwarten, noch weitere Fehler aufgefallen, die wir d
 
 Insgesamt haben wir herausgefunden, dass für unser Team vor allem eine klare und strukturierte Arbeitsweise am besten funktioniert hat. Zunächst haben wir die Umsetzung gemeinsam geplant und die Aufgaben sinnvoll aufgeteilt. Anschließend wurden die einzelnen Teilbereiche eigenständig bearbeitet, gegenseitig reviewed und am Ende gemeinsam integriert und getestet.
 
-Auf diese Weise haben wir beide Aufgabenteile strukturiert und effizient gelöst.
+Auf diese Weise konnten wir beide Aufgabenteile strukturiert und effizient gelöst.
 
 ## 2.0 Alternative Optionen
 >Welche anderen Optionen hatten wir hinsichtlich der Struktur oder Umsetzung?
@@ -89,7 +89,7 @@ Aus diesem Grund gab es auch mehrere Branches, die in Zusammenarbeit, aber eben 
 Dazu sollten aber Anmerkungen in den Commits stehen, damit klar ist, was wir zusammen gemacht haben. Außerdem haben wir im Kanban Board die Tasks immer korrekt verteilt.
 
 ## 6.0 Technische Schwierigkeiten
-
+>Refektion über technische Schwierigkeiten, die wir hatten und wie wir sie gelöst haben.
 ### 6.1 Git-Branches auf einem case-insensitiven Dateisystem
 Ein größeres Problem war, dass wir zwei Branches hatten, welche sich nur durch Groß- und Kleinschreibung unterschieden. 
 Dadurch konnten wir lokal nicht mehr pullen, da das Filesystem auf unseren Rechnern case-insensitive ist und somit zwischen den Branches nicht unterscheiden konnte.
@@ -108,5 +108,5 @@ So müssen wir zum durchlaufen des Arrays nur schauen, ob der aktuelle Wert die 
 So haben wir eine wie wir finden elegante und vor allem autonome Methode das Array durchzulaufen.
 
 ### 6.3 Off-by-one-Fehler beim Generieren von Zufallszahlen
-Ein weiterer Fehler, der uns zum Glück noch aufgefallen ist, ist, dass wir zur Begrenzung der Randomzahlen auf `max_value` `random_number % max_value` benutzt haben, was zu einem „off-by-one“-Fehler geführt hat, da die generierten Zahlen von 0 bis max_value-1 gehen.
+Ein weiterer Fehler, der uns am Ende zum Glück noch aufgefallen ist, ist, dass wir zur Begrenzung der Randomzahlen auf `max_value` `random_number % max_value` benutzt haben, was zu einem „off-by-one“-Fehler geführt hat, da die generierten Zahlen von 0 bis max_value-1 gehen.
 Dies konnten wir lösen, indem wir einfach `random_number % (max_value + 1)` benutzt haben, um die generierten Zahlen von 0 bis max_value zu bekommen.

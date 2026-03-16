@@ -97,7 +97,7 @@ Dies konnten wir lösen, indem wir auf dem Remote den fehlerhaften Branch gelös
  die gelöschten Branches des Origins synchronisiert haben.
 
 ### 6.2 Iteration über das Parkhaus-Array
-Eine andere Schwierigkeit, die wir am Anfang überkommen mussten, war die Frage wie wir durch das Parkhaus Array durchlaufen können. Da die Anzahl der Parkplätze in der main.c gespeichert ist, hätten wir bei jedem Aufruf von Funktionen aus parkhaus.c diesen Wert übergeben müssen. Wir haben uns von Anfang an dagegen entschieden, da dies nur zu einer höheren Komplexität in der Implementierung führt. Wir wollten eine Lösung, die separat, nur lokal in parkhaus.c funktioniert, aber trotzdem Arrays jeglicher Größe durchlaufen kann.
+Eine andere Schwierigkeit, die wir am Anfang lösen mussten, war die Frage, wie wir durch das Parkhaus-Array iterieren können. Da die Anzahl der Parkplätze in der main.c gespeichert ist, hätten wir bei jedem Aufruf von Funktionen aus der parkhaus.c diesen Wert übergeben müssen, da der Pointer auf das Array bei der Übergabe zerfällt und sizeof() so nicht mehr funktioniert.. Wir haben uns von Anfang an dagegen entschieden, da dies nur zu einer höheren Komplexität in der Implementierung führt. Wir wollten eine Lösung, die separat, nur lokal in parkhaus.c funktioniert, aber trotzdem Arrays jeglicher Größe durchlaufen kann.
 
 
 So kamen wir auf die Idee einen "End-Point" einzubauen. Dieser hat die einzigartige `vehicle_id = -1` und wird beim initialisieren des Arrays im Index Anzahl_Parkplätze, also im letzten Parkplatz + 1 gespeichert.

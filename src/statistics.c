@@ -219,7 +219,7 @@ void writeFinalStatsToFile (const stats *p_stats, const sim_parameters *p_sim_pa
     }
 
     while (1){
-        sprintf(filename, "outputs/final_stats_%d.txt", file_counter);
+        sprintf(filename, "outputs/final_stats_%d.txt", file_counter);      //find unique filename for final stats output
         FILE *p_check_file = fopen(filename, "r");
     
         if (p_check_file == NULL)
@@ -275,13 +275,10 @@ void writeFinalStatsToFile (const stats *p_stats, const sim_parameters *p_sim_pa
         fprintf(p_final_stats,"\n%-37s %d Autos", "Länge Warteschlange Ø:", 0); 
     }
     fprintf(p_final_stats,"\n%-35s %d Autos", "Max. Laenge Warteschlange:", p_stats->max_queue_length);
-    double avg_wait_time;
+    double avg_wait_time = 0.0;
     if (p_stats->sum_cars_entered > 0)
     {
         avg_wait_time = (double)p_stats->sum_wait_time / p_stats->sum_cars_entered;
-    }else
-    {
-        avg_wait_time = 0;
     }
     fprintf(p_final_stats,"\n%-36s %.2f Minuten", "Wartezeit Ø:", avg_wait_time);
     fprintf(p_final_stats,"\n%-35s +%d/-%d", "ges. Anzahl Fahrzeuge rein/raus:", p_stats->sum_cars_entered, p_stats->sum_cars_exited);

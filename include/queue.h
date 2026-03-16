@@ -36,6 +36,7 @@ queue *init_queue();
  * @param[in]     id            The ID of the vehicle to be added.
  * @param[in]     parking_time  The parking time of the vehicle to be added.
  * @param[in]     current_time  The current time when the vehicle is added to the queue.
+ *
  * @return                      returns 0 if the vehicle was successfully added to the queue, or -1 
  */
 int enqueue(queue *queue, int id, int parking_time, int current_time);

@@ -85,4 +85,5 @@ int parkhaus_get_used_Spots(vehicle *p_parkhaus[]);
  * @return the Parkhaus Array set to NULL, or NULL for error
 */
 vehicle** free_Parkhaus(vehicle **p_parkhaus);
+
 #endif

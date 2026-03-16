@@ -37,7 +37,7 @@ Dabei sind uns dann, wie zu erwarten, noch weitere Fehler aufgefallen, die wir d
 
 Insgesamt haben wir herausgefunden, dass für unser Team vor allem eine klare und strukturierte Arbeitsweise am besten funktioniert hat. Zunächst haben wir die Umsetzung gemeinsam geplant und die Aufgaben sinnvoll aufgeteilt. Anschließend wurden die einzelnen Teilbereiche eigenständig bearbeitet, gegenseitig reviewed und am Ende gemeinsam integriert und getestet.
 
-Auf diese Weise haben wir beide Aufgabenteile strukturiert und effizient gelöst.
+Auf diese Weise konnten wir beide Aufgabenteile strukturiert und effizient gelöst.
 
 ## 2.0 Alternative Optionen
 >Welche anderen Optionen hatten wir hinsichtlich der Struktur oder Umsetzung?
@@ -52,7 +52,7 @@ Bei der Planung unseres Programms haben wir auch andere Möglichkeiten für die 
 >Warum haben wir uns gegen die anderen Optionen entschieden bzw. für die gewählte Variante gemeinsam entschieden?
 
 1. Unser Parkhaus hat eine festgelegte Größe, die sich im Programmverlauf nicht ändert. Hierfür ist ein Array perfekt geeignet, da es einmal mit dieser Größe initialisiert werden kann. Der Vorteil einer Linked List wäre daher nicht relevant. Zusätzlich können wir mit einem Array auf jeden Index in O(1) zugreifen, während der Zugriff bei einer Linked List O(n) dauern würde.
-2. Für die Datentypen haben wir so gut es geht versucht die speicherschonendste Option zu wählen. Trotzdem gab es Situationen wo wir lieber auf nochmal sicher gegangen sind und die paar verlorenen Bits in Kauf genommen haben um einen fehlerfreien Code garantieren zu können. Hier war immer eine Risikoabwägung unsererseits nötig. 
+2. Für die Datentypen haben wir so gut es geht versucht die speicherschonendste Option zu wählen. Trotzdem gab es Situationen wo wir lieber auf nochmal sicher gegangen sind und den minimal erhöten Speicherverbauch in Kauf genommen haben um einen fehlerfreien Code garantieren zu können. Hier war immer eine Risikoabwägung unsererseits nötig. 
 3. Wir haben uns recht schnell dafür entschieden das Parkhaus als Array, welches Pointer auf die Fahrzeuge enthält zu erstellen. Dies hat den Vorteil, dass nicht für jede Operation ein ganzes Struct ins Array kopiert und an die Funktionen übergeben werden muss, sondern eben nur Pointer auf diese. Das führt zu einer effizienteren Speichernutzung und schnellere Laufzeit. Um einen leeren Platz darstellen zu können, haben wir NULL Pointer benutzt. In der Praxis hat sich dieser Ansatz als gute Entscheidung herausgestellt.
 
 4. Warum wir uns gegen ein extra file für Simloop entschieden haben:
@@ -71,6 +71,7 @@ meistens von der selben Person erkannt und kommentiert wurden. Mit der Zeit hat 
 
 - Auch mussten wir lernen wie man Online Ressourcen und KI, sinnvoll nutzt ohne sich zu sehr darauf zu verlassen oder den Code einfach zu kopieren. Wir haben KI zur Wissensaneignung und Recherche von Funktionen und Algorithmen genutzt, aber immer darauf geachtet, dass wir den Code selbst schreiben und verstehen.
 
+- bei manchen Funktionen haben wir uns auch schwer getan, die Länge der Funktion zu begrenzen, da beispielsweise die write_to_file Funktionen sehr viele Informationen in die Datei schreiben müssen, was zu einer langen Funktion führt. Hier haben wir dann versucht die Funktion so gut es geht zu strukturieren und mit Kommentaren zu versehen, damit sie trotzdem übersichtlich bleibt. Da bei dieser Funktion aber die Logik nicht komplex ist, haben wir uns entschieden sie nicht weiter aufzuteilen, da dies die Übersicht eher verschlechtert hätte.
 
 
 ## 5.0 Positive Erfahrungen in der Teamarbeit
@@ -88,7 +89,7 @@ Aus diesem Grund gab es auch mehrere Branches, die in Zusammenarbeit, aber eben 
 Dazu sollten aber Anmerkungen in den Commits stehen, damit klar ist, was wir zusammen gemacht haben. Außerdem haben wir im Kanban Board die Tasks immer korrekt verteilt.
 
 ## 6.0 Technische Schwierigkeiten
-
+>Refektion über technische Schwierigkeiten, die wir hatten und wie wir sie gelöst haben.
 ### 6.1 Git-Branches auf einem case-insensitiven Dateisystem
 Ein größeres Problem war, dass wir zwei Branches hatten, welche sich nur durch Groß- und Kleinschreibung unterschieden. 
 Dadurch konnten wir lokal nicht mehr pullen, da das Filesystem auf unseren Rechnern case-insensitive ist und somit zwischen den Branches nicht unterscheiden konnte.
@@ -97,7 +98,7 @@ Dies konnten wir lösen, indem wir auf dem Remote den fehlerhaften Branch gelös
  die gelöschten Branches des Origins synchronisiert haben.
 
 ### 6.2 Iteration über das Parkhaus-Array
-Eine andere Schwierigkeit, die wir am Anfang überkommen mussten, war die Frage wie wir durch das Parkhaus Array durchlaufen können. Da die Anzahl der Parkplätze in der main.c gespeichert ist, hätten wir bei jedem Aufruf von Funktionen aus parkhaus.c diesen Wert übergeben müssen. Wir haben uns von Anfang an dagegen entschieden, da dies nur zu einer höheren Komplexität in der Implementierung führt. Wir wollten eine Lösung, die separat, nur lokal in parkhaus.c funktioniert, aber trotzdem Arrays jeglicher Größe durchlaufen kann.
+Eine andere Schwierigkeit, die wir am Anfang lösen mussten, war die Frage, wie wir durch das Parkhaus-Array iterieren können. Da die Anzahl der Parkplätze in der main.c gespeichert ist, hätten wir bei jedem Aufruf von Funktionen aus der parkhaus.c diesen Wert übergeben müssen, da der Pointer auf das Array bei der Übergabe zerfällt und sizeof() so nicht mehr funktioniert.. Wir haben uns von Anfang an dagegen entschieden, da dies nur zu einer höheren Komplexität in der Implementierung führt. Wir wollten eine Lösung, die separat, nur lokal in parkhaus.c funktioniert, aber trotzdem Arrays jeglicher Größe durchlaufen kann.
 
 
 So kamen wir auf die Idee einen "End-Point" einzubauen. Dieser hat die einzigartige `vehicle_id = -1` und wird beim initialisieren des Arrays im Index Anzahl_Parkplätze, also im letzten Parkplatz + 1 gespeichert.
@@ -105,3 +106,7 @@ So kamen wir auf die Idee einen "End-Point" einzubauen. Dieser hat die einzigart
 
 So müssen wir zum durchlaufen des Arrays nur schauen, ob der aktuelle Wert die Eigenschaft `vehicle_id != -1` hat. Hier ist es wichtig, dass die leeren Plätze mit NULL belegt sind und eine Abfrage `NULL->vehicle.id` nicht möglich ist. Deshalb wird in der while-Schleife erst geprüft, ob der aktuelle Wert == NULL ist und erst wenn dies nicht der Fall wird er dereferenziert. 
 So haben wir eine wie wir finden elegante und vor allem autonome Methode das Array durchzulaufen.
+
+### 6.3 Off-by-one-Fehler beim Generieren von Zufallszahlen
+Ein weiterer Fehler, der uns am Ende zum Glück noch aufgefallen ist, ist, dass wir zur Begrenzung der Randomzahlen auf `max_value` `random_number % max_value` benutzt haben, was zu einem „off-by-one“-Fehler geführt hat, da die generierten Zahlen von 0 bis max_value-1 gehen.
+Dies konnten wir lösen, indem wir einfach `random_number % (max_value + 1)` benutzt haben, um die generierten Zahlen von 0 bis max_value zu bekommen.
